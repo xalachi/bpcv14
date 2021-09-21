@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_stock_config_settings_inherit_limit" model="ir.ui.view">
+		<field name="name">stock.config.settings.credit.module</field>
+		<field name="model">res.config.settings</field>
+		<field name="inherit_id" ref="sale.res_config_settings_view_form"/>
+		<field name="arch" type="xml">
+            <xpath expr="//div[@data-key='sale_management']/div[@name='catalog_setting_container']" position="after">
+             	<h2>Sale Order Approve</h2>
+                <div class="row mt16 o_settings_container">
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <field name="due_date_check"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="due_date_check"/>
+                            <div class="text-muted">
+                                Due Date
+                            </div>
+                        </div>
+                    </div>
+					<div class="col-xs-12 col-md-6 o_setting_box">
+					 	<div class="o_setting_right_pane">
+							<label for='sale_approve'/>
+							<div class="text-muted">
+	                        Sale Approve
+	                    	</div>
+						</div>
+						<div class="o_setting_right_pane">
+	                        <field name="sale_approve" widget="radio"/>
+	                     </div>
+					</div>
+                </div>
+            </xpath>
+		</field>
+	</record>
+</odoo>

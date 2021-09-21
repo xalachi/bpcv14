@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<!-- Add custom js for bi_pos_multi_shop -->      
+		<template id="assets_for_bi_pos_multi_stock" inherit_id="point_of_sale.assets">
+			<xpath expr="." position="inside">
+				<script type="text/javascript" src="/bi_pos_warehouse_management/static/src/js/Popup/PosStockWarehouse.js"/>
+				<script type="text/javascript" src="/bi_pos_warehouse_management/static/src/js/Popup/PosOutOfStock.js"/>
+				<script type="text/javascript" src="/bi_pos_warehouse_management/static/src/js/Screens/ProductScreen.js"/>
+				<script type="text/javascript" src="/bi_pos_warehouse_management/static/src/js/Screens/OrderWidget.js"/>
+				<script type="text/javascript" src="/bi_pos_warehouse_management/static/src/js/Screens/ReceiptScreen.js"/>
+				<script type="text/javascript" src="/bi_pos_warehouse_management/static/src/js/models.js"/>
+			 </xpath>
+		 </template>
+	</data>
+</odoo>

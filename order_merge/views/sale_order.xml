@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <act_window id="action_merge_sale_order"
+            name="Merge Sale Orders"
+            res_model="sale.order.merge"
+            binding_model="sale.order"
+            binding_type="action"
+            binding_views="list"
+            view_mode="form" target="new" />
+
+        <act_window id="action_merge_sale_order_lines"
+            name="Merge Order Lines"
+            res_model="sale.orderline.merge.wizard"
+            binding_model="sale.order"
+            binding_type="action"
+            binding_views="form"
+            view_mode="form" target="new" />
+
+        <act_window id="action_merge_purchase_order"
+            name="Merge Purchase Orders"
+            res_model="purchase.order.merge"
+            binding_model="purchase.order"
+            binding_type="action"
+            binding_views="list"
+            view_mode="form"
+            target="new"
+        />
+
+        <act_window id="action_merge_order_lines"
+            name="Merge Order Lines"
+            res_model="purchase.orderline.merge.wizard"
+            binding_model="purchase.order"
+            binding_type="action"
+            binding_views="form"
+            view_mode="form"
+            target="new"
+        />
+    </data>
+</odoo>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="ywt_internal_stock_transfer_seq" model="ir.sequence">
+            <field name="name">Internal Stock Transfer</field>
+            <field name="code">ywt.internal.stock.transfer</field>
+            <field name="prefix">IST/</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

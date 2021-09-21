@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="merge_sale_product_wizard_form" model="ir.ui.view">
+            <field name="model">merge.sale.line</field>
+            <field name="arch" type="xml">
+                <form string="Merge Sale Lines">
+                    <div class="alert alert-info" role="alert">
+                       <strong> Are you sure to merge sale order lines ?</strong>
+                    </div>
+                    <footer>
+                    	<button name="merge" type="object" string="Merge" class="btn btn-primary active" data-toggle="tooltip" title="Merge Sale Order Lines with Quantity"/>
+                        or
+                    	<button string="Cancel" class="btn btn-danger disabled" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window id="merge_sale_line_manual_action_view"
+                    name="Merge Sale Lines"
+                    binding_model="sale.order"  
+                    res_model="merge.sale.line"
+                    view_mode="form"
+                    target="new" 
+                    view_id="merge_sale_product_wizard_form"
+        />  
+
+
+
+        <record id="merge_purchase_product_wizard_form" model="ir.ui.view">
+            <field name="model">merge.purchase.line</field>
+            <field name="arch" type="xml">
+                <form string="Merge Purchase Lines">
+                    <div class="alert alert-info" role="alert">
+                       <strong> Are you sure to merge purchase order lines ?</strong>
+                    </div>
+                    <footer>
+                        <button name="merge" type="object" string="Merge" class="btn btn-primary active" data-toggle="tooltip" title="Merge Sale Order Lines with Quantity"/>
+                        or
+                        <button string="Cancel" class="btn btn-danger disabled" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+        <act_window id="merge_purchase_line_manual_action_view" 
+                    name="Merge Purchase Lines"
+                    binding_model="purchase.order" 
+                    res_model="merge.purchase.line"
+                    view_mode="form"
+                    target="new" 
+                    view_id="merge_purchase_product_wizard_form"
+        />  
+    </data>
+</odoo>

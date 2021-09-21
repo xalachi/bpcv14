@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="product_label_layout">
+        <t t-if="o and 'company_id' in o">
+            <t t-set="company" t-value="o.company_id"/>
+        </t>
+        <t t-if="not o or not 'company_id' in o">
+            <t t-set="company" t-value="res_company"/>
+        </t>
+        <div class="article">
+            <t t-raw="0"/>
+        </div>
+    </template>
+
+    <template id="report_product_label">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="product">
+                <t t-call="ca_barcode_labels.product_label_layout">
+                    <div class="page" align="center">
+                        <div t-if="barcode_config.company_name"
+                             t-attf-style="color:black;font-size:#{barcode_config.company_name_size or '10px'}">
+                            <span t-field="barcode_config.company_name"/>
+                        </div>
+                        <div t-if="barcode_config.barcode" style="color:black;">
+                            <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s&amp;humanreadable=%s' %(barcode_config.barcode_type, product[3], int(barcode_config.display_width), int(barcode_config.display_height),is_humanreadable)"/>
+                        </div>
+                        <div t-if="barcode_config.product_name" t-attf-style="color:black;font-size:#{barcode_config.product_name_size or '10px'}"
+                             align="center">
+                            <span t-field="product[0].name"/>
+                        </div>
+                        <div t-if="barcode_config.product_desc" t-attf-style="color:black;font-size:#{barcode_config.product_desc_size or '10px'}"
+                             align="center">
+                            <span t-field="product[0].description"/>
+                        </div>
+                        <div t-if="barcode_config.product_variant"
+                             t-attf-style="color:black;font-size:#{barcode_config.product_variant_size or '10px'}" align="center">
+                            <span t-esc="product[2]"/>
+                        </div>
+                        <div t-if="barcode_config.lot" align="center">
+                            <span t-esc="product[1]"/>
+                        </div>
+                        <div t-if="barcode_config.product_code" t-attf-style="color:black;font-size:#{barcode_config.product_code_size or '10px'}"
+                             align="center">
+                            <span t-field="product[0].default_code"/>
+                        </div>
+                        <div t-if="barcode_config.price_display"
+                             t-attf-style="color:black;font-size:#{barcode_config.price_display_size or '10px'}">
+                            <t t-if="barcode_config.currency_position == 'before'">
+                                <t t-if="data.get('symbol')">
+                                    <span t-esc="data.get('symbol')"/>
+                                </t>
+                            </t>
+                            <span t-field="product[0].lst_price"/>
+                            <t t-if="barcode_config.currency_position == 'after'">
+                                <t t-if="data.get('symbol')">
+                                    <span t-esc="data.get('symbol')"/>
+                                </t>
+                            </t>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

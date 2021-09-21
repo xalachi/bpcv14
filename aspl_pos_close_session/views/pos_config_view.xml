@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+        <record id="pos_sale_config_inherit_view" model="ir.ui.view">
+            <field name="name">pos.sale.config.inherit.view</field>
+            <field name="model">pos.config</field>
+            <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet" position="inside">
+                    <h2>POS Close Session</h2>
+                    <group col="4">
+                        <field name="enable_close_session"/>
+                        <field name="allow_with_zero_amount"/>
+                        <field name="z_report_pdf" attrs="{'invisible' : [('enable_close_session', '=', False)]}"/>
+                        <field name="email_close_session_report"
+                               attrs="{'invisible' : [('enable_close_session', '=', False)]}"/>
+                        <field name="email_template_id"
+                               attrs="{'invisible' : ['|',('email_close_session_report', '=', False),('enable_close_session', '=', False)],
+                                       'required':[('email_close_session_report','!=',False)],
+                                       }"/>
+                        <field name="users_ids" widget="many2many_tags"
+                               attrs="{'invisible' : ['|',('email_close_session_report', '=', False),('enable_close_session', '=', False)],
+                                       'required':[('email_close_session_report','!=',False)],
+                                      }"/>
+                        <field name="allow_prefill_cash" attrs="{'invisible' : [('enable_close_session', '=', False)]}"/>
+                        <field name="prefill_cash_ids" widget="many2many_tags" attrs="{'invisible' : [('allow_prefill_cash', '=', False)], 'required':[('allow_prefill_cash','!=',False)]}"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

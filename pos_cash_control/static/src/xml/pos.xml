@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : <https://store.webkul.com/license.html/> -->
+<templates id="template" xml:space="preserve">
+    <t t-name="CashControlButton" owl="1">
+        <span class="control-button pos-cash-control">
+            <i class="fa fa-money" aria-hidden="true"></i>
+            Cash Control
+        </span>
+    </t>
+
+    <t t-name="CashControlPopupWidget" owl="1">
+        <div role="dialog" class="modal-dialog">
+            <div class="popup popup-confirm" style="height: 410px; background: white;">
+                <header class="title" style="background: #3e67c1; color: white; padding: 10px;">
+                    <t t-esc=" props.title || 'Cash Control' " />
+                </header>
+                <main class="body" style="height: 290px; overflow-y: scroll; margin: 5px;">
+                    <div class="wk_popup_body">            
+                        <div class='product' t-on-click="click_cash_in" id="cash_in" style="width: 180px; box-shadow: 0 .5rem 0.5rem rgba(0,0,0,.1)!important; padding: 3px;">
+                            <div class="product-img" style="font-size: 80px; width: 100%;">
+                                <img src="/pos_cash_control/static/images/cash in.png" style="margin-bottom: 15px;"/>
+                            </div>
+                            <div class="product-name" style="font-size: 20px; margin-bottom: 5px;">
+                                Cash IN
+                            </div>
+                        </div>
+                        <div class='product' t-on-click="click_cash_out" id="cash_out" style="width: 180px; box-shadow: 0 .5rem 0.5rem rgba(0,0,0,.1)!important; padding: 3px;">
+                            <div class="product-img" style="font-size: 80px; width: 100%;">
+                                <img src="/pos_cash_control/static/images/cash out.png" style="margin-bottom: 15px;"/>
+                            </div>
+                            <div class="product-name" style="font-size: 20px; margin-bottom: 5px;">
+                                Cash OUT
+                            </div>
+                        </div>
+                        <br/>
+                        <div class='product' t-on-click="click_set_closing_cash" id="set_closing_balance" style="width: 180px; box-shadow: 0 .5rem 0.5rem rgba(0,0,0,.1)!important; padding: 3px;">
+                            <div class="product-img" style="font-size: 80px; width: 100%;">
+                                <img src="/pos_cash_control/static/images/closing.png" style="margin-bottom: 15px;"/>
+                            </div>
+                            <div class="product-name" style="font-size: 20px; margin-bottom: 5px;">
+                                Set Closing Cash
+                            </div>
+                        </div>
+                        <div class='product' t-on-click="click_show_payments" id="show_payments" style="width: 180px; box-shadow: 0 .5rem 0.5rem rgba(0,0,0,.1)!important; padding: 3px;">
+                            <div class="product-img" style="font-size: 80px; width: 100%;">
+                                <img src="/pos_cash_control/static/images/payment.png" style="margin-bottom: 15px;"/>
+                            </div>
+                            <div class="product-name" style="font-size: 20px; margin-bottom: 5px;">
+                                Payments
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <footer class="footer">
+                    <div class="button cancel" t-on-click="cancel">
+                        Cancel
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="CashInPopupWidget" owl="1">
+        <div role="dialog" class="modal-dialog">
+            <div class="popup popup-textinput" style="height: 296px;">
+                <header style="background: #3e67c1; color: white; padding: 10px;" class="title"><t t-esc=" props.title || '' " /></header>
+                <main class="body">
+                    <div>
+                        Describe why you put money In to the cash register: 
+                    </div>
+                    <br/>
+                    <span>Reason : </span><input t-on-keydown="remove_class" id="reason" type='text'></input>
+                    <br/>
+                    <br/>
+                    <span>Amount : </span><input t-on-keydown="remove_class" id="amount" type='number'></input>
+                </main>
+                <div class="footer">
+                    <div class="button confirm" t-on-click="click_confirm">
+                        Cash In
+                    </div>
+                    <div class="button cancel" t-on-click="cancel">
+                        Cancel
+                    </div>
+                    <div class="button back" t-on-click="click_back">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                        Back
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="CashOutPopupWidget" owl="1">
+        <div role="dialog" class="modal-dialog">
+            <div class="popup popup-textinput" style="height: 296px;">
+                <header style="background: #3e67c1; color: white; padding: 10px;" class="title"><t t-esc=" props.title || '' " /></header>
+                <main class="body">
+                    <div>
+                        Describe why you take money Out from the cash register: 
+                    </div>
+                    <br/>
+                    <span>Reason : </span><input t-on-keydown="remove_class" id="reason_cash_out" type='text'></input>
+                    <br/>
+                    <br/>
+                    <span>Amount : </span><input t-on-keydown="remove_class" id="amount_cash_out" type='number'></input>
+                </main>
+                <div class="footer">
+                    <div class="button confirm" t-on-click="click_confirm">
+                        Cash Out
+                    </div>
+                    <div class="button cancel" t-on-click="cancel">
+                        Cancel
+                    </div>
+                    <div class="button back" t-on-click="click_back">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                        Back
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="SetClosingBalancePopupWidget" owl="1">
+        <div role="dialog" class="modal-dialog">
+            <div class="popup popup-textinput" style="width: 700px; max-width: 700px; height: 450px;">
+                <header style="background: #3e67c1; color: white; padding: 10px;" class="title"><t t-esc="props.title || '' " /></header>
+                <div class="subwindow-container-fix touch-scrollable scrollable-y" style="padding: 2% 0%; height: 64%; margin-top: -5%;">
+					<div>		
+						<table id="closing-balance" style="width: 100%; text-align: left;">
+							<tr style="border: 1px solid #6f6f6f; background: #6f6f6f; color: white;">
+								<th style="padding: 1%;">Coins/Bills</th>
+								<th>Coin/Bill Value</th>
+								<th>Subtotal</th>	
+							</tr>
+						</table>		
+					</div>
+				</div>
+                <div style="text-align: right; margin-right: 13%; margin-top: 2%; padding-bottom: 1%;">
+                    <div>Total : <span class="total-amount-bills">0.0</span></div>
+                </div>
+                <div class="footer">
+                    <div class="button confirm" t-on-click="click_confirm">
+                        Ok
+                    </div>
+                    <div class="button cancel" t-on-click="cancel">
+                        Cancel
+                    </div>
+                    <div class="button back" t-on-click="click_back">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                        Back
+                    </div>
+                    <div class="button add-line" t-on-click="click_add_line" style="float: left; margin-left: 10px; margin-right: 0px;">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        Add Line
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="SetClosingBalanceLine">
+        <tr class="bill-line" line_id="widget.line" style="border-bottom: 1px solid;">		
+            <td style="padding: 1%;">
+                <input class="bill_count" bill_count_line_id="widget.line" type='text'/>
+            </td>
+            <td>
+                <input class="bill_value" bill_value_line_id="widget.line" type='text'/>
+            </td>
+            <td>
+                <span>total</span>
+            </td>
+            <td>
+                <i class="fa fa-times" bill_line_id="widget.line" aria-hidden="true"></i>
+            </td>
+        </tr>
+    </t>
+
+    <t t-name="PaymentsPopupWidget" owl="1">
+        <div role="dialog" class="modal-dialog">
+            <div class="popup popup-textinput" style="width: 750px; max-width: 750px; height: 480px;">
+                <header style="background: #3e67c1; color: white; padding: 10px; position: relative;" class="title"><t t-esc=" props.title || '' " /></header>
+                <div class="subwindow-container-fix touch-scrollable scrollable-y" style="padding: 2% 0%; height: 52%; margin-top: -5%;">
+					<div>		
+						<table class="history" style="width: 100%; text-align: left;">
+							<tr style="border: 1px solid #6f6f6f; background: #6f6f6f; color: white;">
+								<th style="padding: 1%;">Order</th>
+								<th>Payment Method</th>
+								<th>Amount</th>	
+								<th>Date</th>
+							</tr>
+                            <t t-if="props.payments and props.payments.values">
+                                <t t-foreach="props.payments.values" t-as="payment">
+                                    <tr class="payment-line" style="border-bottom: 1px solid;">		
+                                        <td style="padding: 2%;">
+                                            <t t-esc="payment.pos_order_name"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="payment.payment_name"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="env.pos.format_currency(payment.amount)"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="payment.payment_date"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </t>
+						</table>		
+					</div>
+				</div>
+                <div style="height: 21%; border: 1px solid gray; padding-top: 10px; background: white;">
+                    <t t-if="props.payments">
+                        <table style="width:100%">
+                            <tr>
+                                <td style="text-align: left; padding-left: 10px;">Starting Cash : </td>
+                                <td style="text-align: right; padding-right: 10px;"><t t-esc="env.pos.format_currency(props.payments.cash_register_balance_start)"/></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left; padding-left: 10px;">Transactions : </td>
+                                <td style="text-align: right; padding-right: 10px;"><t t-esc="env.pos.format_currency(props.payments.cash_register_total_entry_encoding)"/></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left; padding-left: 10px;">Expected in Cash : </td>
+                                <td style="text-align: right; padding-right: 10px;"><t t-esc="env.pos.format_currency(props.payments.cash_register_balance_end)"/></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left; padding-left: 10px;">Actual in Cash : </td>
+                                <td style="text-align: right; padding-right: 10px;"><t t-esc="env.pos.format_currency(props.payments.cash_register_balance_end_real)"/></td>
+                            </tr>
+                        </table>
+                    </t>
+                </div>
+                <div class="footer">
+                    <div class="button confirm" t-on-click="cancel">
+                        Ok
+                    </div>
+                    <div class="button back" t-on-click="click_back">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                        Back
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="TransactionPopup" owl="1">
+        <div class="modal-dialog">
+            <div class="popup popup-textinput" style="height:220px !important">
+                <p class="title" style="background: #3e67c1; color: white; padding: 10px;">
+                    <t t-esc="props.title || 'Message' " />
+                </p>
+                <p class="body" style="height: 80px;">
+                    <t t-esc="props.body || '' " />
+                </p>
+                <div class="footer">
+                    <div class="button cancel" t-on-click="cancel">
+                        OK
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

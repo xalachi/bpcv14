@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="view_picking_credit_form_credit" model="ir.ui.view">
+			<field name="name">stock.picking.credit.form.inherit</field>
+			<field name="model">stock.picking</field>
+			<field name="inherit_id" ref="stock.view_picking_form"></field>
+			<field name="arch" type="xml">
+				
+				<xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+					<field name= "sale_state" invisible="1"/>
+					<field name="show_approve" invisible="1"/>
+                 <button name="action_see_approve" string="Waiting for Approve" type="object" class="oe_stat_button" icon="fa-pencil-square-o" attrs="{'invisible': ['|','|','|',('picking_type_code', '!=', 'outgoing'),('sale_state','!=','to_be_approved'),('state','in',['done','cancel']),('show_approve','=',False)]}" style="background-color:red;color:white;"/>
+                 <button name="action_see_approve" string="Approved" type="object" class="oe_stat_button" icon="fa-pencil-square-o" attrs="{'invisible': ['|','|','|',('picking_type_code', '!=', 'outgoing'),('sale_state','=','to_be_approved'),('state','in',['done','cancel']),('show_approve','=',False)]}" style="background-color:green;color:white;"/>
+            </xpath>
+
+         </field>
+        </record>
+            
+	</data>
+</odoo>

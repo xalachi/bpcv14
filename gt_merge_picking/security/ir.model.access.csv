@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_merge_picking,access_merge_picking,model_merge_picking,base.group_user,1,1,1,1
+access_merge_pickingline,access_merge_pickingline,model_merge_pickingline,base.group_user,1,1,1,1

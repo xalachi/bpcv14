@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="aspl_pos_order_sync_assets" inherit_id="point_of_sale.assets">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" href="/aspl_pos_close_session/static/src/css/pos.css"/>
+            <script type="text/javascript"
+                    src="/aspl_pos_close_session/static/src/js/Screens/ProductScreen/ProductScreen.js"></script>
+            <script type="text/javascript"
+                    src="/aspl_pos_close_session/static/src/js/Screens/CashControlScreen/CashControlScreen.js"></script>
+            <script type="text/javascript"
+                    src="/aspl_pos_close_session/static/src/js/Screens/CashControlScreen/CashControlScreenInput.js"></script>
+            <script type="text/javascript"
+                    src="/aspl_pos_close_session/static/src/js/Screens/CashControlScreen/StaticInputLines.js"></script>
+            <script type="text/javascript"
+                    src="/aspl_pos_close_session/static/src/js/Screens/CloseCashControlScreen/CloseCashControlScreen.js"></script>
+            <script type="text/javascript" src="/aspl_pos_close_session/static/src/js/Screens/CloseCashControlScreen/CloseCashControlScreenInput.js"></script>
+            <script type="text/javascript" 
+                    src="/aspl_pos_close_session/static/src/js/Screens/CashControlScreen/DefaultCashControlInput.js"></script>
+            <script type="text/javascript"
+                    src="/aspl_pos_close_session/static/src/js/Popups/CloseSessionPopup.js"></script>
+            <script type="text/javascript" src="/aspl_pos_close_session/static/src/js/Chrome.js"></script>
+            <script type="text/javascript" src="/aspl_pos_close_session/static/src/js/models.js"></script>
+            <script type="text/javascript" src="/aspl_pos_close_session/static/src/js/Screens/CloseCashControlScreen/CloseDefaultCashControlInput.js"></script>
+        </xpath>
+    </template>
+</odoo>

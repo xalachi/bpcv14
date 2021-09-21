@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="pos_multi_warehouse" inherit_id="point_of_sale.template" xml:space="preserve">
+
+	<t t-name="PosOutOfStock" owl="1">
+		<div role="dialog" class="modal-dialog">
+			<Draggable>
+				<div class="popup popup-error" style="min-width: 50%;">
+					<header class="title drag-handle">
+						<t t-esc="props.title || 'Error' " />
+					</header>
+					<main class="body" style="font-family: 'Lato-Reg';">
+						<p><t t-esc="props.warning || '' "/></p>
+						<t t-if="props.loc_list">
+							<span>Following is list of locations with Quantities:</span>
+							<table style="min-width: 80%;margin-top: 10px;">
+								<tr t-foreach="props.loc_list || []" t-as="loc">
+									<td><t t-esc="loc[0]"/></td>
+									<td><t t-esc="loc[1]"/></td>
+								</tr>
+							</table>
+						</t>
+					</main>
+					<footer class="footer">
+						<div class="button cancel" t-on-click="cancel">
+							<t t-esc="props.cancelText" />
+						</div>
+						<div class="button ok" t-on-click="Ok">
+							<t t-esc="props.confirmText" />
+						</div>
+					</footer>
+				</div>
+			</Draggable>
+		</div>
+	</t>
+
+	<t t-name="PosStockWarehouse" owl="1">
+		<div role="dialog" class="modal-dialog">
+			<Draggable>
+				<div class="popup" style="min-width: 50%;">
+					<header class="title drag-handle">
+						Related Warehouses
+					</header>
+					<main class="body" style="font-family: 'Lato-Reg';">
+						<div>
+							<div class='div-container'>
+								<span class='product warehouse-locations' t-foreach="result || []" t-as="item"  t-key="item['location'].id">	
+									<div class="product-name1" t-att-data-id="item['location'].id">
+										<strong><t t-esc="item['location'].complete_name"/></strong>
+										<t t-if="env.pos.config.display_stock_pos">
+											<span class='price-tag'><strong>Qty: <t t-esc="item['quantity']"/></strong></span>
+										</t>
+									</div>
+								</span>
+							</div>
+							<p class="warehouse-qty" style="display:none">
+								<label style="padding: 2%;"> Quantity to Use:  </label> <input id ="stock_qty" type="text" class="input-field" name="stock_qty" style="height: 10px; width: 40%;"></input>
+							</p>
+						</div>
+					</main>
+					<footer class="footer">
+						<div class="button cancel" t-on-click="cancel">
+							<t t-esc="props.cancelText" />
+						</div>
+						<div class="button apply" t-on-click="apply">
+							<t t-esc="props.confirmText" />
+						</div>
+					</footer>
+				</div>
+			</Draggable>
+		</div>
+	</t>
+	
+</templates>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_barcode_configuration_template_tree" model="ir.ui.view">
+            <field name="name">barcode.configuration.template.tree</field>
+            <field name="model">barcode.configuration.template</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="company_name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_barcode_configuration_template_form" model="ir.ui.view">
+            <field name="name">barcode.configuration.template.form</field>
+            <field name="model">barcode.configuration.template</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <!-- <label for="name"/> -->
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group string="Barcode Print Configuration">
+                                <field name="barcode"/>
+                                <field name="barcode_type" attrs="{'invisible': [('barcode', '=', False)], 'required': [('barcode', '=', True)]}"/>
+                                <field name="barcode_field" attrs="{'invisible': [('barcode', '=', False)], 'required': [('barcode', '=', True)]}"/>
+                                <field name="humanreadable" attrs="{'invisible': [('barcode', '=', False)]}"/>
+                                <field name="display_height" string="Barcode Height(px)" attrs="{'invisible': [('barcode', '=', False)]}"/>
+                                <field name="display_width" string="Barcode Width(px)" attrs="{'invisible': [('barcode', '=', False)]}"/>
+                                <field name="barcode_height" string="Barcode Height Quality(px)" invisible="1"/>
+                                <field name="barcode_width" string="Barcode Width Quality(px)" invisible="1"/>
+                            </group>
+                            <group string="Paper Format Configuration">
+                                <field name="margin_left"/>
+                                <field name="margin_right"/>
+                                <field name="margin_top"/>
+                                <field name="margin_bottom"/>
+                                <field name="dpi"/>
+                                <field name="label_height"/>
+                                <field name="label_height_px"/>
+                                <field name="label_width"/>
+                                <field name="label_width_px"/>
+                                <field name="header_spacing" invisible="1"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group string="View Configuration">
+                                <field name="company_name"/>
+                                <field name="default_qty_labels"/>
+                                <field name="select_default"/>
+                                <field name="product_name"/>
+                                <field name="product_desc"/>
+                                <field name="product_code"/>
+                                <field name="product_variant"/>
+                                <field name="lot" invisible="1"/>
+                                <field name="price_display"/>
+                                <field name="currency_id" options='{"no_open": True,"no_create": 1, "no_create_edit": 1}'
+                                       attrs="{'invisible': [('price_display', '=', False)]}"/>
+                                <field name="currency_position" attrs="{'invisible': [('price_display', '=', False)]}"/>
+                            </group>
+                            <group string="Font Size in Px">
+                                <separator string="Please add suffix as a 'px'" style="font-size: 13px; color:#AE0505"/>
+                                <field name="company_name_size"/>
+                                <field name="product_name_size"/>
+                                <field name="product_desc_size"/>
+                                <field name="product_code_size"/>
+                                <field name="price_display_size"/>
+                                <field name="product_variant_size"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="view_barcode_configuration_template_search" model="ir.ui.view">
+            <field name="name">barcode.configuration.template.search</field>
+            <field name="model">barcode.configuration.template</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="company_name"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_barcode_config_template" model="ir.actions.act_window">
+            <field name="name">Barcode Configuration Template</field>
+            <field name="res_model">barcode.configuration.template</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+        </record>
+
+        <menuitem id="menu_barcode_configuration" name="Barcode Configuration Template" parent="sale.menu_sale_config"
+                  action="action_barcode_config_template" groups="ca_barcode_labels.group_allow_barcode_labels" sequence="30"/>
+
+    </data>
+</odoo>

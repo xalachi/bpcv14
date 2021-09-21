@@ -1,0 +1,84 @@
+<odoo>
+      <record id="merge_picking_23" model="ir.ui.view">
+          <field name="name">merge.picking.wizard</field>
+          <field name="model">merge.picking</field>
+          <field name="arch" type="xml">
+              <form string="New Form"> 
+                 <sheet placeholder="Picking will be created will all selected picking">  
+                   <field name="merge_picking_line">
+                      <tree string="picking">
+                        <field name='pick_name'/>
+                        <field name='partner_id'/>
+                        <field name='origin'/>
+                        <field name='state'/>
+                      </tree>
+                  </field>
+                   <group>         
+          <footer>
+              <button string="Merge Pickings" name="Create_new_picking_record" type="object" class="oe_highlight"/>
+              <button string="Cancel" class="oe_link" special="cancel"/>
+          </footer>
+          </group> 
+         
+        </sheet>
+      </form>  
+    </field>
+  </record>
+
+     <record id="merge_picking_action_only" model="ir.actions.act_window">
+            <field name="name">merge picking</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">merge.picking</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <!-- TODO: check if we need this -->
+            <field name="binding_model_id" ref="stock.model_stock_picking" />
+            <field name="binding_view_types">list</field>
+        </record>
+
+    
+    <!--  <record id="action_view_sale_advance_payment_inv" model="ir.actions.act_window">
+            <field name="name">Create invoices</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.advance.payment.inv</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="groups_id" eval="[(4,ref('sales_team.group_sale_salesman'))]"/>
+             TODO: check if we need this 
+            <field name="binding_model_id" ref="sale.model_sale_order" />
+            <field name="binding_view_types">list</field>
+        </record> -->
+
+
+  <!--   <act_window
+        id= "action_validate_account_move"
+        name="merge picking"
+        res_model="merge.picking"
+        binding_model="stock.picking"
+        binding_views="form"
+        target="new"
+      
+        /> -->
+
+    <!-- <act_window
+            id="act_create_exit_request"
+            name="merge picking"
+            res_model="merge.picking"
+            binding_module="stock.picking"
+            view_mode="form"
+            multi="True"
+            target="new"
+            key2="client_action_multi"/> 
+            
+
+            <act_window
+            name="Generate a Payment Link"
+            res_model="payment.link.wizard"
+            binding_model="sale.order"
+            binding_views="form"
+            view_mode="form"
+            target="new"
+            view_id="payment.payment_link_wizard_view_form"
+            id="action_sale_order_generate_link"
+/>  -->
+</odoo>

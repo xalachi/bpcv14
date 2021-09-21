@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<odoo>
+	
+	<template id="assets" inherit_id="point_of_sale.assets">
+		<xpath expr="." position="inside">
+			<script type="text/javascript" src="/pos_reserve_order_app/static/src/js/pos_reserve_order.js"/>
+			<link rel="stylesheet" href="/pos_reserve_order_app/static/src/css/custom.css"/>
+		</xpath>
+	</template>
+
+	<record model="ir.ui.view" id="pos_order_inherit">
+		<field name="name">pos.order.view.form</field>
+		<field name="model">pos.order</field>
+		<field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='state']" position="replace">
+				<field name="state" widget="statusbar" statusbar_visible="draft,reserved,paid,done" />
+			</xpath>
+			<xpath expr="//field[@name='amount_tax']" position="after">
+				<field name="amount_due"  widget="monetary" invisible="1"/>
+			</xpath>
+			<xpath expr="//field[@name='fiscal_position_id']" position="after">
+				<field name="is_reserved"  invisible="1"/>
+			</xpath>
+			<xpath expr="//field[@name='partner_id']" position="after">
+				<field name="delivery_date" attrs="{'invisible': [('is_reserved' ,'=', False)]}" />
+			</xpath>
+		</field>
+	</record>
+
+
+	<record id="view_pos_config_inherit" model="ir.ui.view">
+			<field name="name">pos.config.inherit</field>
+			<field name="model">pos.config</field>
+			<field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//div[@id='posbox_reference']" position="after">
+					<br/>
+					<h2> Reserve Order Configuration</h2>
+					<div class="row mt16 o_settings_container" id="session_config">
+						<div class="col-xs-12 col-md-6 o_setting_box">
+							<div class="o_setting_left_pane">
+								<field name="enable_reservation"/>
+							</div>
+							<div class="o_setting_right_pane">
+								<label for="enable_reservation"/>
+								<div class="text-muted">
+									Enable to create reserve order from POS
+								</div>
+								<div class="content-group mt16" style="display: flex;">
+									<div style="display: grid;min-width: 300px;"  attrs="{'invisible': [('enable_reservation' ,'=', False)]}">
+										<label for="reservation_location"/>
+										<label for="cancel_charge_type"/>
+										<label for="cancel_charges"/>
+										<label for="cancel_charges_product"/>
+										<label for="reserve_charge_type"/>
+										<label for="min_reserve_charges"/>
+										<label for="last_days"/>
+									</div>
+									<div style="display: grid;min-width: 300px;" attrs="{'invisible': [('enable_reservation' ,'=', False)]}">
+										<field name="reservation_location" attrs="{'required': [('enable_reservation', '!=', False)]}" />
+										<field name="cancel_charge_type" attrs="{'required': [('enable_reservation', '!=', False)]}" />
+										<field name="cancel_charges" attrs="{'required': [('enable_reservation', '!=', False)]}" />
+										<field name="cancel_charges_product" attrs="{'required': [('enable_reservation', '!=', False)]}" />
+										<field name="reserve_charge_type" attrs="{'required': [('enable_reservation', '!=', False)]}" />
+										<field name="min_reserve_charges" attrs="{'required': [('enable_reservation', '!=', False)]}" />
+										<div style="display: flex;">
+											<field name="last_days" />
+											<span style="font-weight: 600;">Days</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+					</div>			
+					</xpath>		
+			</field>
+		</record>
+
+		<!-- <record id="reserved_order_field" model="ir.ui.view">
+			<field name="name">Reserved Field</field>
+			<field name="model">stock.quant</field>
+			<field name="inherit_id" ref="stock.view_stock_quant_tree_editable"/>
+			<field name="arch" type="xml">
+				<xpath expr="//tree/field[@name='reserved_quantity']" position="replace">
+					<field name="reserved_quantity"/>
+				</xpath>
+			</field>
+		</record> -->
+</odoo>

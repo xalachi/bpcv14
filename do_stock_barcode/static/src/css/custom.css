@@ -1,0 +1,50 @@
+.notification_center {
+  top: 40%;
+  left: 40%;
+}
+
+@media (min-width:320px) {
+  .notification_center {
+    top: 25%;
+    left: 10%;
+  }
+}
+
+@media (min-width:481px) {
+  .notification_center {
+    top: 30%;
+    left: 15%;
+  }
+}
+
+@media (min-width:641px) {
+  .notification_center {
+    top: 35%;
+    left: 20%;
+  }
+}
+
+@media (min-width:961px) {
+  .notification_center {
+    top: 40%;
+    left: 35%;
+  }
+}
+
+@media (min-width:1025px) {
+  .notification_center {
+    top: 40%;
+    left: 40%;
+  }
+}
+
+@media (min-width:1281px) {
+  .notification_center {
+    top: 40%;
+    left: 40%;
+  }
+}
+.success .bg-danger
+{
+  background-color: #2E7D32 !important;
+}

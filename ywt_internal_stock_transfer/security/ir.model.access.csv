@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ywt_internal_stock_transfer_manager,ywt_internal_stock_transfer_manager,model_ywt_internal_stock_transfer,stock.group_stock_manager,1,1,1,1
+access_ywt_internal_stock_transfer_line_manager,ywt_internal_stock_transfer_line_manager,model_ywt_internal_stock_transfer_line,stock.group_stock_manager,1,1,1,1

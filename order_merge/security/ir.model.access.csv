@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_order_merge,access_sale_order_merge,order_merge.model_sale_order_merge,,1,1,1,1
+access_merge_same_customer_sale_order_wizard,merge_same_customer_sale_order_wizard,order_merge.model_merge_same_customer_sale_order_wizard,,1,1,1,1
+access_sale_orderline_merge_wizard,sale_orderline_merge_wizard,order_merge.model_sale_orderline_merge_wizard,,1,1,1,1
+access_purchase_order_merge,purchase_order_merge,order_merge.model_purchase_order_merge,,1,1,1,1
+access_merge_same_vendor_purchase_order_wizard,merge_same_vendor_purchase_order_wizard,order_merge.model_merge_same_vendor_purchase_order_wizard,,1,1,1,1
+access_purchase_orderline_merge_wizard,purchase_orderline_merge_wizard,order_merge.model_purchase_orderline_merge_wizard,,1,1,1,1
+

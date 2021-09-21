@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id="assets_for_bi_pos_reprint_reorder" inherit_id="point_of_sale.assets">
+			<xpath expr="." position="inside">
+				<script type="text/javascript" src="/bi_pos_reprint_reorder/static/src/js/Popups/ReOrderPopup.js"></script>
+				<script type="text/javascript" src="/bi_pos_reprint_reorder/static/src/js/Screens/POSOrdersScreen.js"></script>
+				<script type="text/javascript" src="/bi_pos_reprint_reorder/static/src/js/Screens/OrderReprintScreen.js"></script>
+				<script type="text/javascript" src="/bi_pos_reprint_reorder/static/src/js/Screens/OrderReprintReceipt.js"></script>
+			</xpath>
+		</template>
+	</data>
+</odoo>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!--Wizard For Purchase Order-->
+        <record id="view_same_vendor_purchase_order_merge_form_new_1" model="ir.ui.view">
+            <field name="model">merge.same.vendor.purchase.order.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Merge Purchase Orders">
+                    <sheet>
+                        <group>
+                            <group>
+                            <field name="partner_id" required="True"/>
+                            <field name="type" required="True"/>
+                            </group>
+
+                            <group>
+                                <field name="purchase_order"  domain="[('state','=','draft'),('id','in',purchase_order_to_merge)]" attrs="{'invisible': [('type', 'in', ['new','exist'])],'required': [('type', 'in', ['exist_1','exist_2'])]}" options="{'no_create': True, 'no_edit': True}"/>
+                            </group>
+                            
+                        </group>
+                        <group>
+                            <field nolabel="1" name="purchase_order_to_merge" attrs="{'invisible': [('partner_id', '=', False)]}" domain="[('state','=','draft'),('partner_id','=', partner_id)]" options="{'no_create': True, 'no_edit': True}"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="merge_same_vendor_purchase_orders" type="object" string="Merge" class="oe_highlight"
+                                attrs="{'invisible': [('purchase_order_to_merge', '=', [(6, False, [])])]}"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_merge_same_vendor_purchase_order_wizard" model="ir.actions.act_window">
+            <field name="name">Merge Purchase Orders</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">merge.same.vendor.purchase.order.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem name="Merge Purchase for Same Vendor" id="merge_same_vendor_pos" parent="purchase.menu_procurement_management" action="action_merge_same_vendor_purchase_order_wizard"/>
+    </data>
+</odoo>

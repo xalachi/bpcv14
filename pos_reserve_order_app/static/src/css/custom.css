@@ -1,0 +1,16 @@
+
+
+.pos .remove-product{
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 5px;
+}
+.pos .remove-product:active {
+    color: #f80606;
+    background: #ffff;
+}
+
+
+
+
+

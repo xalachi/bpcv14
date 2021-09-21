@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<odoo>
+	<record id="merge_so_line_res_config_view_form" model="ir.ui.view">
+		<field name="name">res.config.settings.saleorder.merge.view.form</field>
+		<field name="model">res.config.settings</field>
+		<field name="inherit_id" ref="sale.res_config_settings_view_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//div[@id='sale_config_online_confirmation_sign']" position="after">
+				<div class="col-12 col-lg-6 o_setting_box">
+					<div class="o_setting_left_pane">
+						<field name="auto_merge_so_line"/>
+					</div>
+					<div class="o_setting_right_pane">
+						<label for="auto_merge_so_line"/>
+						<span class="fa fa-lg fa-building-o"  groups="base.group_multi_company"/>
+						<div class="text-muted">
+							Sale order lines will be merged automatically while creating or editing order.
+						</div>
+					</div>
+				</div>
+			</xpath>
+		</field>
+	</record>
+
+	<record id="merge_po_line_res_config_view_form" model="ir.ui.view">
+		<field name="name">res.config.settings.purchaseorder.merge.view.form</field>
+		<field name="model">res.config.settings</field>
+		<field name="inherit_id" ref="purchase.res_config_settings_view_form_purchase"/>
+		<field name="arch" type="xml">
+			<xpath expr="//div[hasclass('app_settings_block')][@data-key='purchase']/div[1]/div[1]" position="after">
+				<div class="col-12 col-lg-6 o_setting_box">
+					<div class="o_setting_left_pane">
+						<field name="auto_merge_po_line"/>
+					</div>
+					<div class="o_setting_right_pane">
+						<label for="auto_merge_po_line"/>
+						<span class="fa fa-lg fa-building-o"  groups="base.group_multi_company"/>
+						<div class="text-muted">
+							Purchase order lines will be merged automatically while creating or editing order.
+						</div>
+					</div>
+				</div>
+			</xpath>
+		</field>
+	</record>
+
+</odoo>

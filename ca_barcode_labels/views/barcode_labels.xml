@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_product_label_form" model="ir.ui.view">
+            <field name="name">product.label.form</field>
+            <field name="model">product.label</field>
+            <field name="arch" type="xml">
+                <form string="Barcode Labels">
+                    <group colspan="4" string="Select Products To Print Barcode Label">
+                        <field name="product_lines" nolabel="1">
+                            <tree string="Product" editable="bottom">
+                                <field name="product_id" options='{"no_open": True,"no_create": 1, "no_create_edit": 1}'/>
+                                <field name="lot_id" invisible="1"/>
+                                <field name="qty"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group>
+                        <field name="barcode_template" options='{"no_open": 1,"no_create": 1, "no_create_edit": 1}'/>
+                    </group>
+                    <footer>
+                        <button name="print_product_barcode_label" string="Print Label" default_focus="1" type="object"
+                                class="btn-primary fa fa-print"/>
+                        or
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_barcode_labels" model="ir.actions.act_window">
+            <field name="name">Product Label</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.label</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_product_label_form"/>
+            <field name="target">new</field>
+        </record>
+
+
+        <act_window id="product_template_barcode_label" name="Barcode Product Labels" view_mode="form"
+                    res_model="product.label" binding_model="product.template" target="new"/>
+
+        <act_window id="product_barcode_label" name="Barcode Product Labels" view_mode="form"
+                    res_model="product.label" binding_model="product.product" target="new"/>
+
+        <act_window id="so_barcode_label" name="Barcode Product Labels" view_mode="form"
+                    res_model="product.label" binding_model="sale.order" target="new"/>
+
+        <act_window id="po_barcode_label" name="Barcode Product Labels" view_mode="form"
+                    res_model="product.label" binding_model="purchase.order" target="new"/>
+
+        <act_window id="picking_barcode_label" name="Barcode Product Labels" view_mode="form"
+                    res_model="product.label" binding_model="stock.picking" target="new"/>
+
+        <report id="product_dynamic_labels" string="Print Labels" model="product.product"
+                report_type="qweb-pdf" name="ca_barcode_labels.report_product_label"
+                file="ca_barcode_labels.report_product_label"/>
+
+        <menuitem id="menu_product_barcode_label" action="action_barcode_labels" name="Product Label"
+                  parent="sale.product_menu_catalog" sequence="10"
+                  groups="ca_barcode_labels.group_allow_barcode_labels"/>
+
+    </data>
+</odoo>

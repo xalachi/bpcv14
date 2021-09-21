@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="pos_order_reservation_template" inherit_id="point_of_sale.template" xml:space="preserve">
+	<!-- ClientListScreenWidget -->
+	<t t-name="PaymentScreenInherit" t-inherit="point_of_sale.PaymentScreen" t-inherit-mode="extension" owl="1">
+		<xpath expr="//div[hasclass('top-content-center')]" position="after">
+			<t t-if="env.pos.config.enable_reservation">
+				<span class='button reserve' style="margin-left: 250px;" t-on-click="trigger('reserve-order')" t-att-class="{ highlight: order_reserve() }">
+					Reserve
+					<i class='fa fa-angle-double-right'></i>
+				</span>
+			</t>
+		</xpath>
+	</t> 
+
+
+	<!-- <t t-extend="ClientListScreenWidget"> -->
+	<t t-name="ClientListScreenInherit" t-inherit="point_of_sale.ClientListScreen" t-inherit-mode="extension" owl="1">
+		<xpath expr="//div[hasclass('back')]" position="after">
+			<div class="button view-orders" t-on-click="showScreen('SeeReservedOrdersScreenWidget')">
+				<span> View Orders </span>
+			</div>
+		</xpath>
+	</t>
+
+	<t t-name="ClientLineInherit" t-inherit="point_of_sale.ClientLine" t-inherit-mode="extension" owl="1">
+		<xpath expr="//tr" position="inside">
+			<t t-if="env.pos.config.enable_reservation">
+				<td>
+					<button class="selected-client-orders" t-on-click="client_order" t-att-id="props.partner.id"> <i class="fa fa-university" t-att-id="props.partner.id"></i> View Orders </button>
+				</td>
+			</t>
+		</xpath>
+	</t>
+	<!-- ClientLineWidget -->
+	<t t-extend="ClientLine">
+		<t t-jquery="tr.client-line" t-operation="append">
+			<t t-if="widget.pos.config.enable_reservation">
+				<td>
+					<button class="selected-client-orders" t-att-id='partner.id'> <i class="fa fa-university"></i> View Orders </button>
+				</td>
+			</t>
+		</t>
+	</t> 
+
+	<t t-name="SeeReservedOrdersButtonWidget" name="See Reserved Orders Button Widget" owl="1">
+		<t t-if="env.pos.config.enable_reservation">
+			<div class="control-button button confirm" id="reserve_order_button" style="background-color: #7f82ac; color: #fff;font-size: 14px;">
+				<i class="fa fa-shopping-cart"></i>Reserved Orders
+			</div>
+		</t>
+	</t>
+
+	<t t-name="ReservedLinesButtonWidget" name="See Reserved Lines Button Widget" owl='1'>
+		<t t-if="env.pos.config.enable_reservation">
+			<div class="control-button button confirm" id="reserve_line_button" style="background-color: #7f82ac; color: #fff;font-size: 14px;">
+				<i class="fa fa-list"></i>Reserved Products
+			</div>
+		</t>
+	</t>
+
+	<t t-extend="PaymentScreenWidget">
+		<t t-jquery=".top-content" t-operation="replace">
+			<div class='top-content'>
+				<span class='button back'>
+					<i class='fa fa-angle-double-left'></i>
+					Back
+				</span>
+				<h1>Payment</h1>
+				<t t-if="widget.pos.config.enable_reservation">
+					<span class='button reserve' style="margin-left: 250px;">
+						Reserve
+						<i class='fa fa-angle-double-right'></i>
+					</span>
+				</t>
+				<span class='button next'>
+					Validate
+					<i class='fa fa-angle-double-right'></i>
+				</span>
+			</div>
+			
+		</t>
+	</t>
+
+	<t t-name="SelectReserveDateWidget" owl="1">
+		<div class="modal-dialog">
+			<div class="popup popup-textinput" style="height: 300px !important;">
+				<p class="title" style="background-color: rgb(110,200,155); color: #fff;">Delivery Date</p>
+				<input id ="entered_date" type="date" class='input' name="code" style="margin-left: 100px;max-width: 300px;margin-top: 20px;"></input>
+				<div class="footer" style="background-color: rgb(110,200,155); color: #fff;">
+					<div class="button cancel" style="background-color: #0075AC; color: #fff;">
+						Cancel 
+					</div>
+					<div class="button confirm" id="apply_date" style="background-color: #0075AC; color: #fff;" t-on-click="create_reserve_order">
+						Apply 
+					</div>
+				</div>
+			</div>
+		</div>
+	</t>
+
+	<t t-extend="OrderReceipt">
+		<t t-jquery=".orderlines" t-operation="before">
+			<t t-if="order.amount_due">
+				<div style="text-align: center;margin-bottom: 15px;">
+					Delivery Date: <t t-esc="order.delivery_date"/><br />
+				</div>
+			</t>
+		</t>
+		<t t-jquery=".receipt-change" t-operation="before">
+			<t t-if="order.amount_due">
+				<tr>
+					<td>
+						Amount Due:
+					</td>
+					<span t-esc='widget.format_currency(order.amount_due)' class="pos-receipt-right-align"/> 
+				</tr>
+			</t>
+		</t>
+	</t>
+
+	<!-- SeeReservedOrdersScreenWidget -->
+	 
+	<t t-name="SeeReservedOrdersScreenWidget" owl="1">
+		<div class="clientlist-screen screen">
+			<div class="screen-content" style="max-width: 1200px;">
+				<section class="top-content">
+					<span class='button back' t-on-click="back">
+						<i class='fa fa-angle-double-left'></i>
+						Cancel
+					</span>
+					<span class='refresh-order button' style="margin-left: 230px;" id='refresh'><i class='fa fa-refresh' t-on-click="refresh"></i></span>
+					<span class='searchbox search-order' >
+						<input placeholder='Search Orders' />
+						<span class='search-clear'></span>
+					</span>
+					<span class='searchbox'></span>
+				</section>
+				<section class="full-content">
+					<div class='window touch-scrollable scrollable-y'>
+						<section class='subwindow collapsed'>
+							<div class='subwindow-container'>
+								<div class='subwindow-container-fix client-details-contents'>
+								</div>
+							</div>
+						</section>
+						<section class='subwindow'>
+							<div class='subwindow-container'>
+								<div class="subwindow-container-fix touch-scrollable scrollable-y">
+									<table class='client-list'>
+										<thead>
+											<tr style="background-color: #7f82ac; color: #fff;">
+												<th>Order Ref</th>
+												<th>Receipt Ref</th>
+												<th>Customer</th>
+												<th>Order Date</th>
+												<th>State</th>
+												<th>Total</th>
+												<th>Amount Due</th>
+												<th>Amount Paid </th>
+												<th>Pay</th>
+												<th>Cancel</th>
+												<th>Delivery Date</th>
+											</tr>
+										</thead>
+										<tbody class='orders-list-contents'>
+											<!-- <OrdersLine orders="selected_orders"/> -->
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</section>
+					</div>
+				</section>
+				
+			</div>
+		</div>
+	</t>
+
+	<!-- OrdersLine -->
+	<t t-name="OrdersLine">
+		<tr>
+			<td class='orders-line' t-att-data-id='order.id' style="cursor: pointer;" ><t t-esc='order.name' /></td>
+			<td class='orders-line' t-att-data-id='order.id' style="cursor: pointer;"><t t-esc='order.pos_reference' /></td>
+			<td class='orders-line' t-att-data-id='order.id' style="cursor: pointer;"><t t-esc='order.partner_id[1] or ""' /></td>
+			<td class='orders-line' t-att-data-id='order.id' style="cursor: pointer;"><t t-esc='current_date' /></td>
+			<td class='orders-line' t-att-data-id='order.id' style="cursor: pointer;">
+				<t t-if="order.state == 'draft'">Draft/New</t>
+				<t t-if="order.state == 'invoiced'">Invoiced</t>
+				<t t-if="order.state == 'paid'">Paid</t>
+				<t t-if="order.state == 'done'">Posted</t>
+				<t t-if="order.state == 'reserved'">Reserved</t>
+				<t t-if="order.state == 'cancel'">Cancelled</t>
+			</td>
+			<td class='orders-line' t-att-data-id='order.id' style="cursor: pointer;"><t t-esc='widget.env.pos.format_currency(order.amount_total)' /></td>
+			<td class='orders-line' t-att-data-id='order.id' style="cursor: pointer;"><t t-esc='widget.env.pos.format_currency(order.amount_due)' /></td>
+			<td class='orders-line' t-att-data-id='order.id' style="cursor: pointer;"><t t-esc='widget.env.pos.format_currency(order.amount_paid)' /></td>
+			<td>
+				<button class="pay-order" t-att-id='order.id' style="cursor: pointer; color: #fff; background-color: #7F82AC;font-size: 20px;"><i class="fa fa-money"></i></button>
+			</td>
+			<td>
+				<button class="cancel-order" t-att-id='order.id' style="cursor: pointer; color: #fff; background-color: #7F82AC;font-size: 20px;"><i class="fa fa-times"></i></button>
+			</td>
+			<td>
+				<button class="change-date" t-att-id='order.id' style="cursor: pointer; color: #fff; background-color: #7F82AC;font-size: 20px;margin-left: 20px;"><i class="fa fa-calendar"></i></button>
+			</td>
+		</tr>
+	</t>
+
+	<t t-name="ReservedOrderDetailsPopupWidget" owl="1">
+		<div class="modal-dialog">
+			<div class="popup popup-confirm" style="height: 450px; width:700px; max-width: 780px;">
+				<p class="title" style="background-color: #7f82ac; color: #fff;height: 10px;">Order Details</p>
+				<div class="body" style="height: 300px;">
+					<t t-foreach="props.order || []" t-as="item" t-att-id="item.id">
+						<table style='width:100%'>
+							<tr style='line-height:30px; font-size:15px'>
+								<td style='width:20%; text-align:left'><strong>Order Ref:</strong>
+								</td>
+								<td style='width:30%; text-align:left'>
+									<span t-esc="item['name']"/>
+								</td>
+								<td style='width:20%; text-align:left'><strong>Order Date:</strong>
+								</td>
+								<td style='width:30%; text-align:left'>    
+									<span t-esc="props.current_date" />
+								</td>
+							</tr>
+							
+							<tr style='line-height:30px; font-size:15px'>
+								<td style='width:20%; text-align:left'><strong>Customer:</strong>
+								</td>
+								<td style='width:30%; text-align:left'>
+									
+									<span t-esc="item['partner_id'][1] or ''"/>
+									
+								</td>
+								<td style='width:20%; text-align:left'><strong>Total Amount:</strong>
+								</td>
+								<td style='width:30%; text-align:left'>    
+									<span t-esc="env.pos.format_currency(item['amount_total'])" />
+								</td>
+							</tr>
+							
+							<tr style='line-height:30px; font-size:15px'>
+								<td style='width:20%; text-align:left'><strong>Receipt Ref:</strong>
+								</td>
+								<td style='width:30%; text-align:left'>
+									<span t-esc="item['pos_reference']"/>
+								</td>
+								<td style='width:20%; text-align:left'><strong>Status:</strong>
+								</td>
+								<td style='width:30%; text-align:left'>
+									Reserved
+								</td>
+							</tr>
+							<tr style='line-height:30px; font-size:15px'>
+								<td style='width:20%; text-align:left'><strong>Company:</strong>
+								</td>
+								<td style='width:30%; text-align:left'>
+									<span t-esc="item['company_id'][1]"/>
+								</td>
+								<td style='width:20%; text-align:left'><strong>Session:</strong>
+								</td>
+								<td style='width:30%; text-align:left'>    
+									<span t-esc="item['session_id'][1]" />
+								</td>
+							</tr>
+							<tr style='line-height:30px; font-size:15px'>
+								<td style='width:20%; text-align:left'><strong>Amount Due:</strong>
+								</td>
+								<td style='width:30%; text-align:left'>
+									<span t-esc="item['amount_due']"/>
+								</td>
+								<td style='width:20%; text-align:left'><strong>Delivery Date:</strong>
+								</td>
+								<td style='width:30%; text-align:left'>    
+									<span t-esc="item['delivery_date']" />
+								</td>
+							</tr>
+						</table>
+					</t>
+					<br/>
+					<table style='width:100%'>
+						<thead>
+							<tr style="border:1px solid black; line-height:30px;">
+								<th style='width:25%; padding-left: 10px; text-align:left'>Product</th>
+								<th style='width:25%; padding-left: 10px; text-align:left'>Discount</th>
+								<th style='width:25%; padding-left: 10px; text-align:left'>Quantity</th>
+								<th style='width:25%; padding-left: 10px; text-align:left'>Price</th> 
+							</tr>
+						</thead>
+						<tbody>
+							<tr style="border:1px solid black; line-height:30px; font-size:15px;" t-foreach="props.orderline || []" t-as="line1">
+								<td style='width:25%; padding-left: 10px; text-align:left'><t t-esc='line1.product_id[1]' /></td>
+								<td style='width:25%; padding-left: 10px; text-align:left'><t t-esc='line1.discount' /></td>
+								<td style='width:25%; padding-left: 10px; text-align:left'><t t-esc='line1.qty' /></td>
+								<td style='width:25%; padding-left: 10px; text-align:left'><t t-esc='line1.price_unit' /></td>
+							</tr>
+						</tbody>
+					</table>
+					
+				</div>
+
+				<div class="footer" style="background-color: #7f82ac; color: #fff; margin-top:70px;">
+
+					<div class="button cancel" style="background-color: #E0E0E0; color: black;" t-on-click="cancel">
+						Cancel
+					</div>
+				</div>
+			</div>
+		</div>
+	</t>
+
+	<t t-name="CancelOrderPopupWidget" owl="1">
+		<div class="modal-dialog">
+			<div class="popup popup-confirm" style="height: 430px !important;">
+				<p class="title" style="background-color: rgb(110,200,155); color: #fff;">Cancel order/Change Qty</p>
+				<div class="body" style="height: 275px !important;">
+					<div class="form-group" id="form1" style="margin-bottom: 25px; margin-top: 10px;">  
+						<input id="delete_whole" class="delete_whole" type="checkbox"  
+							style="min-height: 15px !important;width: 25px !important;box-shadow: none !important;"/>
+						<label for="delete_whole">Delete Whole Order</label>
+					</div>
+					<div class='div-container'>
+						<table class='cancelorder-product-list'>
+							<thead>
+								<tr class="cancelorder_product_header">
+									<th style="width: 45%; ">Product</th>
+									<th style="width: 45%;">Order Qty</th>
+									<th style="width: 10%;"></th>
+								</tr>
+							</thead>
+							<tbody class='cancelorder-product-list-contents'>
+								<tr class="cancelorder_product_body" t-foreach="props.selectedValue.orderlines || []" t-as="item" t-key="item.id">
+									<td><t t-esc='item.product_id[1]' /></td>
+									<td class="entered_item_qty" style="padding: 3px;" >
+										<input id ="entered_item_qty" t-att-line-id='item.id' t-att-qty-id='item.qty' type="text" class="input-field" name="code"  t-att-value="item.qty" ></input>
+									</td>
+									<td class="remove-line" t-att-line-id='item.id' t-on-click="remove_line(item.id)">
+										<i t-att-line-id='item.id' class='fa fa-trash-o remove-product'/>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="footer" style="background-color: rgb(110,200,155); color: #fff;">
+					<div class="button cancel" style="background-color: #0075AC; color: #fff;">
+						Cancel
+					</div>
+					<div class="button confirm" id="apply_order" style="background-color: #0075AC; color: #fff;" t-on-click="cancel_order_or_product">
+						Apply
+					</div>
+				</div>
+			</div>
+		</div>
+	</t>
+
+	<t t-name="ChangeReserveDateWidget" owl="1">
+		<div class="modal-dialog">
+			<div class="popup popup-textinput" style="height: 300px !important;">
+				<p class="title" style="background-color: rgb(110,200,155); color: #fff;">Delivery Date</p>
+				<input id ="changed_date" type="date" class='input' name="code" style="margin-left: 100px;max-width: 300px;margin-top: 20px;"></input>
+				<div class="footer" style="background-color: rgb(110,200,155); color: #fff;margin-top:75px;">
+					<div class="button cancel" style="background-color: #0075AC; color: #fff;" t-on-click="cancel">
+						Cancel 
+					</div>
+					<div class="button confirm" id="change_date" style="background-color: #0075AC; color: #fff;" t-on-click='change_reserve_order_date'>
+						Apply 
+					</div>
+				</div>
+			</div>
+		</div>
+	</t>
+
+	<t t-name="PayReserveOrderPopupWidget" owl="1">
+		<div class="modal-dialog">
+			<div class="popup popup-textinput" style="height: 400px !important;">
+				<p class="title" style="background-color: rgb(110,200,155); color: #fff;">Pay Reserve Order</p>
+				<div style="font-size: 18px;color: #0075ac;"><span>You have to pay:&#160;</span>
+				<span style="color: #069c52;;"><t t-esc="props.selectedValue.amount_due "/></span>
+				<span>&#160;Amount to done this order</span></div>
+				<select class="select_journal_id" name='select_journal_id' style="height: 40px; margin-top: 30px;margin-left: 100px;margin-bottom: 10px;max-width: 300px;width: 300px;">
+					<t t-foreach='env.pos.payment_methods' t-as='jrnl' t-key="jrnl.id">
+						<option t-att-value='jrnl.id'> 
+							<t t-esc='jrnl.name'/>
+						</option>
+					</t>
+				</select>
+				<input id ="pay_amount" type="number" class='input'  placeholder='Enter Amount'
+					t-att-value='props.selectedValue.amount_due || ""' name="pay_amount" style="margin-top: 20px;max-width: 300px;margin-left: 100px;" t-on-change="get_change"></input>
+				<div style="font-size: 18px;color: #0075ac; display:none;" class="reamining-div">
+					<span>Please Collect Change Amount:&#160;</span>
+					<span style="color: #069c52;" class="reamining-change"></span>
+				</div>
+				<div class="footer" style="background-color: rgb(110,200,155); color: #fff; margin-top: 80px;">
+					<div class="button cancel" style="background-color: #0075AC; color: #fff;" t-on-click="cancel">
+						Cancel 
+					</div>
+					<div class="button confirm-pay" id="pay_order" style="background-color: #0075AC; color: #fff;" t-on-click='pay_order'>
+						Pay 
+					</div>
+				</div>
+			</div>
+		</div>
+	</t>
+
+	<t t-name="ReservedLinesScreenWidget" owl="1">
+		<div class="clientlist-screen screen">
+			<div class="screen-content" style="max-width: 1140px;">
+				<section class="top-content">
+					<span class='button back' t-on-click="back">
+						<i class='fa fa-angle-double-left'></i>
+						Cancel
+					</span>
+					<span class='refresh-line button' style="margin-left: 230px;" id='refresh' t-on-click="get_reserved_lines"><i class='fa fa-refresh'></i></span>
+					<span class='searchbox search-order' >
+						<input placeholder='Search Orders' t-on-keyup="render_list_orders"/>
+						<span class='search-clear'></span>
+					</span>
+					<span class='searchbox'></span>
+				</section>
+				<section class="full-content">
+					<div class='window touch-scrollable scrollable-y'>
+						<section class='subwindow collapsed'>
+							<div class='subwindow-container'>
+								<div class='subwindow-container-fix client-details-contents'>
+								</div>
+							</div>
+						</section>
+						<section class='subwindow'>
+							<div class='subwindow-container'>
+								<div class="subwindow-container-fix touch-scrollable scrollable-y">
+									<table class='client-list'>
+										<thead>
+											<tr style="background-color: #7f82ac; color: #fff;">
+												<th>Product</th>
+												<th>Quantity</th>>
+												<th>Order</th>
+												<th>Order Date</th>
+												<th>Delivery Date</th>
+											</tr>
+										</thead>
+										<tbody class='lines-list-contents'>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</section>
+					</div>
+				</section>
+				
+			</div>
+		</div>
+	</t>
+
+	<t t-name="ReservedOrdersLine">
+		<tr>
+			<td class='line-product' t-att-data-id='line.id' style="cursor: pointer;"><t t-esc='line.product' /></td>
+			<td class='line-qty' t-att-data-id='line.id' style="cursor: pointer;"><t t-esc='line.qty' /></td>
+			<td class='line-order' t-att-data-id='line.id' style="cursor: pointer;"><t t-esc='line.order_id' /></td>
+			<td class='line-date' t-att-data-id='line.id' style="cursor: pointer;"><t t-esc='line.date_order' /></td>
+			<td class='line-delivery-date' t-att-data-id='line.id' style="cursor: pointer;"><t t-esc='line.delivery_date' /></td>
+		</tr>
+	</t>
+
+</templates>
+
+

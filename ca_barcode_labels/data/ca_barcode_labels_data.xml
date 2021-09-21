@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data noupdate="1">
+        <record id="barcode_configuration_template_ean_product" model="barcode.configuration.template">
+            <field name="name">EAN13 Product Barcode</field>
+            <field name="margin_top" eval="1"/>
+            <field name="label_height" eval="40"/>
+            <field name="label_width" eval="66"/>
+            <field name="margin_bottom" eval="1"/>
+            <field name="margin_right" eval="1"/>
+            <field name="margin_left" eval="1"/>
+            <field name="header_spacing" eval="1"/>
+            <field name="dpi" eval="90"/>
+            <field name="display_height" eval="100"/>
+            <field name="display_width" eval="350"/>
+            <field name="barcode_type">EAN13</field>
+            <field name="currency_position">before</field>
+            <field name="humanreadable" eval="True"/>
+            <field name="product_name" eval="True"/>
+            <field name="barcode" eval="True"/>
+            <field name="barcode_field">barcode</field>
+            <field name="lot" eval="False"/>
+            <field name="barcode_width" eval="1400"/>
+            <field name="barcode_height" eval="300"/>
+        </record>
+    </data>
+
+    <data>
+        <record id="barcode_label_paperformat" model="report.paperformat">
+            <field name="name">Dynamic Product Barcode Paper Format</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_width">43</field>
+            <field name="orientation">Portrait</field>
+            <field name="page_height">30</field>
+            <field name="margin_bottom">1</field>
+            <field name="margin_top">4</field>
+            <field name="margin_left">1</field>
+            <field name="header_spacing">0</field>
+            <field name="header_line" eval="False"/>
+            <field name="dpi">90</field>
+            <field name="margin_right">1</field>
+            <field name="report_ids" eval="[(6,0,[ref('ca_barcode_labels.product_dynamic_labels')])]"/>
+        </record>
+    </data>
+
+</odoo>

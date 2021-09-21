@@ -1,0 +1,15 @@
+/* Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>)
+See LICENSE file for full copyright and licensing details.
+License URL : <https://store.webkul.com/license.html/> */
+.payment-line:hover{
+    background: #cacaca;
+}
+
+.text_shake{
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    border-color:red !important;
+    border: 2px solid red !important;
+  }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="opening_cash_prefill_view_tree" model="ir.ui.view">
+        <field name="name">opening.cash.prefill.tree</field>
+        <field name="model">opening.cash.prefill</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name"/>
+                <field name="value" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_opening_cash_prefill" model="ir.actions.act_window">
+        <field name="name">Opening Cash Prefill</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">opening.cash.prefill</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <menuitem id="menu_opening_cash_prefill" parent="point_of_sale.menu_point_config_product" action="action_opening_cash_prefill" sequence="3" groups="point_of_sale.group_pos_manager,point_of_sale.group_pos_user"/>
+</odoo>

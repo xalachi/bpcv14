@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="pos_expense_template" inherit_id="point_of_sale.template" xml:space="preserve">
+    
+    <t t-name="Expenses" owl="1">
+        <t>
+            <div class="control-button">
+                HR Expense
+            </div>
+        </t>
+    </t>
+
+    <t t-name="Expensepopup" owl="1">
+        <div class="modal-dialog">
+            <div class="popup popup-quot-order">
+                <header class="title drag-handle">
+                        <t t-esc="props.title" />
+                    </header>
+                <p class="body">
+                    <div class="client-detail">
+                        <span class="label">Product</span>
+                        <select id="note_select" class="note_temp" style="width:450px;">
+                            <option value="">None</option>
+                            <t t-foreach="env.pos.products" t-as="product" t-key="product.id">
+                                <option t-att-value="product.id">
+                                    <t t-esc="product.name" />
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                    <br/>
+                    <span>Description :</span><input type="text" name="name" class="field_value_name" placeholder="Description"/><br/><br/>
+                    <div>Quantity :</div><input type="numbers" name="qty" class="field_value_qty" value="1"/>
+                    
+                </p>
+                <footer class="footer centered">
+                    <div class="button cancel" t-on-mousedown.prevent="cancel">
+                        <t t-esc="props.cancelText" />
+                    </div>
+                    <div class="button confirm" t-on-mousedown.prevent="confirm">
+                        <t t-esc="props.confirmText" />
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </t>
+
+</templates>
+    
+    

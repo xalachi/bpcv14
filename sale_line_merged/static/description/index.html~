@@ -1,0 +1,42 @@
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12">
+            <h2 class="oe_slogan">Merge Same Sale Order line</h2>
+        </div>
+        <div class="oe_span12">
+            <h5 class="oe_slogan">Allow you to merge same product line in to one line.</h5>
+            <div class="oe_demo oe_picture oe_screenshot">
+                    <img src="calibs1.png">
+                <div class="oe_demo_footer oe_centeralign">Header Button</div>
+            </div>
+            <div class="oe_demo oe_picture oe_screenshot">
+                    <img src="calibs2.png">
+                <div class="oe_demo_footer oe_centeralign">Screen for Merge Lines</div>
+            </div>
+            <div class="oe_demo oe_picture oe_screenshot">
+                    <img src="calibs_warn1.png">
+                <div class="oe_demo_footer oe_centeralign">Warning Message if no any product lines duplication</div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="oe_container" >
+   <div class="oe_row oe_spaced">
+       <div class="oe_span6">
+           <div class="oe_picture" style="margin: 25px 10%;">
+               <a href="http://caliber.odoo.com/">
+                   <img src="logo.png">
+               </a>
+           </div>
+       </div>
+       <div class="oe_span6">
+           <p class="oe_mt32">
+               If you need any help or want more additional features,<br/> you may contact us through:<br/>
+               Email: <a href="calibersware@gmail.com">calibersware@gmail.com</a><br/>
+               Website:<a href="calibersoftware.odoo.com">CaliberSoftware</a><br/>
+           </p>
+       </div>
+   </div>
+</section>
+
+ 

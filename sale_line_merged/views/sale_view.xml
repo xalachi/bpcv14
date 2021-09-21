@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_order_form_inherit_soline_merged">
+            <field name="name">sale.order.view.inherit.soline.merged</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/header" position="inside">
+                    <button string="Check Duplicate and Merged" type="object" icon="fa-check-square-o" name="check_same_product_available" class="oe_stat_button" attrs="{'invisible':[('state','not in', ['draft','sent'])]}"/>
+                </xpath>
+            </field>
+         </record>
+      </data>
+</odoo>

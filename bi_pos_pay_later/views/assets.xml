@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id='pos_pay_assets' name='POS Summary Assets' inherit_id='point_of_sale.assets'>
+			<xpath expr='.' position='inside'>
+				<script type="text/javascript" src="/bi_pos_pay_later/static/src/js/models.js"/>
+				<script type="text/javascript" src="/bi_pos_pay_later/static/src/js/Screens/PayPOSOrdersScreen.js"></script>
+				<script type="text/javascript" src="/bi_pos_pay_later/static/src/js/Screens/CreateDraftPOS.js"></script>
+				<script type="text/javascript" src="/bi_pos_pay_later/static/src/js/Screens/PaymentScreen.js"></script>
+			</xpath>
+		</template>
+	
+	</data>
+</odoo>
+

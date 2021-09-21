@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+
+
+        <record id="purchase_tree_view_inherit" model="ir.ui.view">
+            <field name="name">purchase.order.tree.inherite</field>
+            <field name="model">purchase.order</field>
+            <field name="priority" eval="8" />
+            <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='invoice_status']" position="replace">
+                    <field name="invoice_status"/>
+                </xpath>          
+
+        </field>
+        </record>
+    
+        <!--Wizard For Sale Order-->
+        <record id="view_order_merge_form_new_1" model="ir.ui.view">
+            <field name="name">sale.order.merge.form</field>
+            <field name="model">sale.order.merge</field>
+            <field name="arch" type="xml">
+                <form string="Merge orders">
+                    <sheet>
+                        <p style="font-size:20px; color:black;">You can only merge draft orders.</p>
+                        <p style="font-size: initial; color: darkcyan;text-decoration: underline;"
+                           attrs="{'invisible': [('merge_with_diff_partner','!=',True)]}">
+                            When you merge orders for different customers new sale order will be generated for selected Customer and other sales will be cancel. Do you want to continue ?</p>
+                        <group>
+                            <field name="merge_with_diff_partner"/>
+                            <field name="partner_id" attrs="{'invisible': [('merge_with_diff_partner','!=',True)], 'required':[('merge_with_diff_partner','!=',False)]}"/>
+                            <field name="type" attrs="{'invisible': [('merge_with_diff_partner','!=',False)]}"/>
+                            <field name="sale_order" domain="[('id','in',sale_order_to_merge)]" attrs="{'invisible': ['|',('type', 'in', ['new','exist']),('merge_with_diff_partner','!=',False)],'required': [('type', 'in', ['exist_1','exist_2'])]}" options="{'no_create': True, 'no_edit': True}"/>
+                            <field name="sale_order_to_merge" readonly="1"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="merge_sale" type="object" string="Merge" class="oe_highlight"
+                                attrs="{'invisible': [('sale_order_to_merge', '=', [(6, False, [])])]}"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+
+        <!--Wizard For Purchase Order-->
+        <record id="view_purchase_order_merge_form_new_1" model="ir.ui.view">
+            <field name="name">purchase.order.merge.form</field>
+            <field name="model">purchase.order.merge</field>
+            <field name="arch" type="xml">
+                <form string="Merge orders">
+                    <sheet>
+                        <p style="font-size:20px; color:black;">You can only merge draft orders.</p>
+                        <p style="font-size: initial; color: darkcyan;text-decoration: underline;"
+                           attrs="{'invisible': [('merge_with_diff_partner','!=',True)]}">
+                            When you merge orders for different vendor new purchase order will be generated for selected vendor and other purchase will be cancel. Do you want to continue ?</p>
+                        <group>
+                            <field name="merge_with_diff_partner"/>
+                            <field name="partner_id" attrs="{'invisible': [('merge_with_diff_partner','!=',True)], 'required':[('merge_with_diff_partner','!=',False)]}"/>
+                            <field name="type" attrs="{'invisible': [('merge_with_diff_partner','!=',False)]}"/>
+                            <field name="purchase_order" domain="[('id','in',purchase_order_to_merge)]" attrs="{'invisible': ['|',('type', 'in', ['new','exist']),('merge_with_diff_partner','!=',False)],'required': [('type', 'in', ['exist_1','exist_2'])]}" options="{'no_create': True, 'no_edit': True}"/>
+                            <field name="purchase_order_to_merge" readonly="1"/>
+
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="merge_purchase" type="object" string="Merge" class="oe_highlight"
+                                attrs="{'invisible': [('purchase_order_to_merge', '=', [(6, False, [])])]}"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+
+</odoo>

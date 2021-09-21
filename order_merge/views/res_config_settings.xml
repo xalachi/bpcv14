@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="view_sale_orderline_merge_settings">
+            <field name="name">sale.orderline.merge.settings</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="sale.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@data-key='sale_management']/div" position="inside">
+                    <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="auto_merge_sale_orderlines"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="auto_merge_sale_orderlines"/>
+                                <div class="text-muted">
+                                    Will Automatically merge sale orderlines while creating or editing order.
+                                </div>
+                            </div>
+
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_purchase_orderline_merge_settings">
+            <field name="name">purchase.orderline.merge.settings</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="purchase.res_config_settings_view_form_purchase"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='purchase_setting_container']" position="inside">
+                    <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="auto_merge_purchase_orderlines"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="auto_merge_purchase_orderlines"/>
+                                <div class="text-muted">
+                                    Will Automatically merge purchase orderlines while creating or editing order.
+                                </div>
+                            </div>
+
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

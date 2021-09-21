@@ -1,0 +1,20 @@
+
+Version 14.0.1.0 : (21-01-21)
+		- Update code as per v14.
+
+Version 14.0.2.0 : (01-03-21)
+		- Update flow for out of stock quantity.
+		- Now user can add quantity from different location for same product.
+
+=> 14.0.2.1 : Improved an index as per latest improvements.
+
+=> 14.0.2.2 : Added constraint if stock location not present in Available Warehouses locations
+			  
+Version 14.0.2.3 : (28-06-21)
+		- Add validation for config location quantity check also.
+
+Version 14.0.2.4 : (15-07-21)
+		- Solved self.env.pos.loc_by_id[k] is undefined error while click on payment button.
+
+Version 14.0.2.5 : (29-07-21)
+		- Solved complete_name undefine error while clicking on pay button in product screen.

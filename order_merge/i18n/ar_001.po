@@ -1,0 +1,377 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* order_merge
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-31 13:35+0000\n"
+"PO-Revision-Date: 2021-05-31 13:35+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: order_merge
+#: model_terms:ir.ui.view,arch_db:order_merge.view_purchase_order_line_merge_form
+msgid "Are you sure to merge Purchase order lines ?"
+msgstr "هل أنت متأكد من دمج سطور أوامر الشراء؟"
+
+#. module: order_merge
+#: model_terms:ir.ui.view,arch_db:order_merge.view_sale_order_line_merge_form
+msgid "Are you sure to merge Sale order lines ?"
+msgstr "هل أنت متأكد من دمج أسطر أوامر البيع؟"
+
+#. module: order_merge
+#: model:ir.model.fields,field_description:order_merge.field_res_config_settings__auto_merge_purchase_orderlines
+msgid "Auto Merge Purchase Orderlines"
+msgstr "دمج خطوط أوامر الشراء تلقائيًا"
+
+#. module: order_merge
+#: model:ir.model.fields,field_description:order_merge.field_res_config_settings__auto_merge_sale_orderlines
+msgid "Auto Merge Sale Orderlines"
+msgstr "خطوط أوامر بيع الدمج التلقائي"
+
+#. module: order_merge
+#: model_terms:ir.ui.view,arch_db:order_merge.view_order_merge_form_new_1
+#: model_terms:ir.ui.view,arch_db:order_merge.view_purchase_order_line_merge_form
+#: model_terms:ir.ui.view,arch_db:order_merge.view_purchase_order_merge_form_new_1
+#: model_terms:ir.ui.view,arch_db:order_merge.view_sale_order_line_merge_form
+#: model_terms:ir.ui.view,arch_db:order_merge.view_same_customer_sale_order_merge_form_new_1
+#: model_terms:ir.ui.view,arch_db:order_merge.view_same_vendor_purchase_order_merge_form_new_1
+msgid "Cancel"
+msgstr "يلغي"
+
+#. module: order_merge
+#: model:ir.model,name:order_merge.model_res_config_settings
+msgid "Config Settings"
+msgstr "ضبط الاعدادات"
+
+#. module: order_merge
+#: model:ir.model.fields,field_description:order_merge.field_merge_same_customer_sale_order_wizard__create_uid
+#: model:ir.model.fields,field_description:order_merge.field_merge_same_vendor_purchase_order_wizard__create_uid
+#: model:ir.model.fields,field_description:order_merge.field_purchase_order_merge__create_uid
+#: model:ir.model.fields,field_description:order_merge.field_purchase_orderline_merge_wizard__create_uid
+#: model:ir.model.fields,field_description:order_merge.field_sale_order_merge__create_uid
+#: model:ir.model.fields,field_description:order_merge.field_sale_orderline_merge_wizard__create_uid
+msgid "Created by"
+msgstr "انشأ من قبل"
+
+#. module: order_merge
+#: model:ir.model.fields,field_description:order_merge.field_merge_same_customer_sale_order_wizard__create_date
+#: model:ir.model.fields,field_description:order_merge.field_merge_same_vendor_purchase_order_wizard__create_date
+#: model:ir.model.fields,field_description:order_merge.field_purchase_order_merge__create_date
+#: model:ir.model.fields,field_description:order_merge.field_purchase_orderline_merge_wizard__create_date
+#: model:ir.model.fields,field_description:order_merge.field_sale_order_merge__create_date
+#: model:ir.model.fields,field_description:order_merge.field_sale_orderline_merge_wizard__create_date
+msgid "Created on"
+msgstr "تم إنشاؤها على"
+
+#. module: order_merge
+#: model:ir.model.fields,field_description:order_merge.field_merge_same_customer_sale_order_wizard__partner_id
+#: model:ir.model.fields,field_description:order_merge.field_sale_order_merge__partner_id
+msgid "Customer"
+msgstr "عميل"
+
+#. module: order_merge
+#: model:ir.model.fields,field_description:order_merge.field_merge_same_customer_sale_order_wizard__display_name
+#: model:ir.model.fields,field_description:order_merge.field_merge_same_vendor_purchase_order_wizard__display_name
+#: model:ir.model.fields,field_description:order_merge.field_purchase_order__display_name
+#: model:ir.model.fields,field_description:order_merge.field_purchase_order_merge__display_name
+#: model:ir.model.fields,field_description:order_merge.field_purchase_orderline_merge_wizard__display_name
+#: model:ir.model.fields,field_description:order_merge.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:order_merge.field_sale_order__display_name
+#: model:ir.model.fields,field_description:order_merge.field_sale_order_merge__display_name
+#: model:ir.model.fields,field_description:order_merge.field_sale_orderline_merge_wizard__display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: order_merge
+#: model:ir.model.fields,field_description:order_merge.field_merge_same_customer_sale_order_wizard__id
+#: model:ir.model.fields,field_description:order_merge.field_merge_same_vendor_purchase_order_wizard__id
+#: model:ir.model.fields,field_description:order_merge.field_purchase_order__id
+#: model:ir.model.fields,field_description:order_merge.field_purchase_order_merge__id
+#: model:ir.model.fields,field_description:order_merge.field_purchase_orderline_merge_wizard__id
+#: model:ir.model.fields,field_description:order_merge.field_res_config_settings__id
+#: model:ir.model.fields,field_description:order_merge.field_sale_order__id
+#: model:ir.model.fields,field_description:order_merge.field_sale_order_merge__id
+#: model:ir.model.fields,field_description:order_merge.field_sale_orderline_merge_wizard__id
+msgid "ID"
+msgstr "المُعرف"
+
+#. module: order_merge
+#: model:ir.model.fields,field_description:order_merge.field_merge_same_customer_sale_order_wizard____last_update
+#: model:ir.model.fields,field_description:order_merge.field_merge_same_vendor_purchase_order_wizard____last_update
+#: model:ir.model.fields,field_description:order_merge.field_purchase_order____last_update
+#: model:ir.model.fields,field_description:order_merge.field_purchase_order_merge____last_update
+#: model:ir.model.fields,field_description:order_merge.field_purchase_orderline_merge_wizard____last_update
+#: model:ir.model.fields,field_description:order_merge.field_res_config_settings____last_update
+#: model:ir.model.fields,field_description:order_merge.field_sale_order____last_update
+#: model:ir.model.fields,field_description:order_merge.field_sale_order_merge____last_update
+#: model:ir.model.fields,field_description:order_merge.field_sale_orderline_merge_wizard____last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: order_merge
+#: model:ir.model.fields,field_description:order_merge.field_merge_same_customer_sale_order_wizard__write_uid
+#: model:ir.model.fields,field_description:order_merge.field_merge_same_vendor_purchase_order_wizard__write_uid
+#: model:ir.model.fields,field_description:order_merge.field_purchase_order_merge__write_uid
+#: model:ir.model.fields,field_description:order_merge.field_purchase_orderline_merge_wizard__write_uid
+#: model:ir.model.fields,field_description:order_merge.field_sale_order_merge__write_uid
+#: model:ir.model.fields,field_description:order_merge.field_sale_orderline_merge_wizard__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: order_merge
+#: model:ir.model.fields,field_description:order_merge.field_merge_same_customer_sale_order_wizard__write_date
+#: model:ir.model.fields,field_description:order_merge.field_merge_same_vendor_purchase_order_wizard__write_date
+#: model:ir.model.fields,field_description:order_merge.field_purchase_order_merge__write_date
+#: model:ir.model.fields,field_description:order_merge.field_purchase_orderline_merge_wizard__write_date
+#: model:ir.model.fields,field_description:order_merge.field_sale_order_merge__write_date
+#: model:ir.model.fields,field_description:order_merge.field_sale_orderline_merge_wizard__write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: order_merge
+#: model_terms:ir.ui.view,arch_db:order_merge.view_order_merge_form_new_1
+#: model_terms:ir.ui.view,arch_db:order_merge.view_purchase_order_line_merge_form
+#: model_terms:ir.ui.view,arch_db:order_merge.view_purchase_order_merge_form_new_1
+#: model_terms:ir.ui.view,arch_db:order_merge.view_sale_order_line_merge_form
+#: model_terms:ir.ui.view,arch_db:order_merge.view_same_customer_sale_order_merge_form_new_1
+#: model_terms:ir.ui.view,arch_db:order_merge.view_same_vendor_purchase_order_merge_form_new_1
+msgid "Merge"
+msgstr "دمج"
+
+#. module: order_merge
+#: model:ir.actions.act_window,name:order_merge.action_merge_order_lines
+#: model:ir.actions.act_window,name:order_merge.action_merge_sale_order_lines
+msgid "Merge Order Lines"
+msgstr "دمج خطوط الترتيب"
+
+#. module: order_merge
+#: model:ir.actions.act_window,name:order_merge.action_merge_purchase_order
+#: model:ir.actions.act_window,name:order_merge.action_merge_same_vendor_purchase_order_wizard
+#: model_terms:ir.ui.view,arch_db:order_merge.view_same_vendor_purchase_order_merge_form_new_1
+msgid "Merge Purchase Orders"
+msgstr "دمج أوامر الشراء"
+
+#. module: order_merge
+#: model:ir.ui.menu,name:order_merge.merge_same_vendor_pos
+msgid "Merge Purchase for Same Vendor"
+msgstr "دمج الشراء لنفس البائع"
+
+#. module: order_merge
+#: model:ir.model,name:order_merge.model_purchase_order_merge
+msgid "Merge Purchase orders"
+msgstr "دمج أوامر الشراء"
+
+#. module: order_merge
+#: model:ir.actions.act_window,name:order_merge.action_merge_sale_order
+#: model:ir.actions.act_window,name:order_merge.action_merge_same_customer_sale_order_wizard
+#: model_terms:ir.ui.view,arch_db:order_merge.view_same_customer_sale_order_merge_form_new_1
+msgid "Merge Sale Orders"
+msgstr "دمج أوامر البيع"
+
+#. module: order_merge
+#: model:ir.ui.menu,name:order_merge.merge_same_customer_sos
+msgid "Merge Sale for Same Customer"
+msgstr "دمج البيع لنفس العميل"
+
+#. module: order_merge
+#: model:ir.model,name:order_merge.model_sale_order_merge
+msgid "Merge Sale orders"
+msgstr "دمج أوامر البيع"
+
+#. module: order_merge
+#: model:ir.model,name:order_merge.model_merge_same_customer_sale_order_wizard
+msgid "Merge Same Customer Sale orders"
+msgstr "دمج أوامر البيع الخاصة بالعميل نفسه"
+
+#. module: order_merge
+#: model:ir.model,name:order_merge.model_merge_same_vendor_purchase_order_wizard
+msgid "Merge Same Vendor Purchase orders"
+msgstr "دمج أوامر الشراء من نفس البائع"
+
+#. module: order_merge
+#: model:ir.model.fields,field_description:order_merge.field_merge_same_customer_sale_order_wizard__type
+#: model:ir.model.fields,field_description:order_merge.field_merge_same_vendor_purchase_order_wizard__type
+#: model:ir.model.fields,field_description:order_merge.field_purchase_order_merge__type
+#: model:ir.model.fields,field_description:order_merge.field_sale_order_merge__type
+msgid "Merge Type"
+msgstr "نوع الدمج"
+
+#. module: order_merge
+#: model:ir.model.fields,field_description:order_merge.field_merge_same_customer_sale_order_wizard__sale_order
+#: model:ir.model.fields,field_description:order_merge.field_merge_same_vendor_purchase_order_wizard__purchase_order
+#: model:ir.model.fields,field_description:order_merge.field_purchase_order_merge__purchase_order
+msgid "Merge into"
+msgstr "يندمج ب"
+
+#. module: order_merge
+#: model:ir.model.fields.selection,name:order_merge.selection__merge_same_customer_sale_order_wizard__type__exist_1
+#: model:ir.model.fields.selection,name:order_merge.selection__merge_same_vendor_purchase_order_wizard__type__exist_1
+#: model:ir.model.fields.selection,name:order_merge.selection__purchase_order_merge__type__exist_1
+#: model:ir.model.fields.selection,name:order_merge.selection__sale_order_merge__type__exist_1
+msgid "Merge order on existing selected order and cancel others"
+msgstr "دمج الطلب في الأمر المحدد الموجود وإلغاء الطلبات الأخرى"
+
+#. module: order_merge
+#: model:ir.model.fields.selection,name:order_merge.selection__merge_same_customer_sale_order_wizard__type__exist_2
+#: model:ir.model.fields.selection,name:order_merge.selection__merge_same_vendor_purchase_order_wizard__type__exist_2
+#: model:ir.model.fields.selection,name:order_merge.selection__purchase_order_merge__type__exist_2
+#: model:ir.model.fields.selection,name:order_merge.selection__sale_order_merge__type__exist_2
+msgid "Merge order on existing selected order and delete others"
+msgstr "ترتيب الدمج في الأمر المحدد الموجود وحذف الآخرين"
+
+#. module: order_merge
+#: model_terms:ir.ui.view,arch_db:order_merge.view_order_merge_form_new_1
+#: model_terms:ir.ui.view,arch_db:order_merge.view_purchase_order_line_merge_form
+#: model_terms:ir.ui.view,arch_db:order_merge.view_purchase_order_merge_form_new_1
+#: model_terms:ir.ui.view,arch_db:order_merge.view_sale_order_line_merge_form
+msgid "Merge orders"
+msgstr "أوامر الدمج"
+
+#. module: order_merge
+#: model:ir.model.fields,field_description:order_merge.field_sale_order_merge__sale_order
+msgid "Merge with"
+msgstr "يدمج مع"
+
+#. module: order_merge
+#: model:ir.model.fields,field_description:order_merge.field_sale_order_merge__merge_with_diff_partner
+msgid "Merge with Different Customer"
+msgstr "الاندماج مع عميل مختلف"
+
+#. module: order_merge
+#: model:ir.model.fields,field_description:order_merge.field_purchase_order_merge__merge_with_diff_partner
+msgid "Merge with Different Partner"
+msgstr "الاندماج مع شريك مختلف"
+
+#. module: order_merge
+#: model:ir.model.fields.selection,name:order_merge.selection__merge_same_customer_sale_order_wizard__type__new
+#: model:ir.model.fields.selection,name:order_merge.selection__merge_same_vendor_purchase_order_wizard__type__new
+#: model:ir.model.fields.selection,name:order_merge.selection__purchase_order_merge__type__new
+#: model:ir.model.fields.selection,name:order_merge.selection__sale_order_merge__type__new
+msgid "New Order and Cancel Selected"
+msgstr "طلب جديد وإلغاء المحدد"
+
+#. module: order_merge
+#: model:ir.model.fields.selection,name:order_merge.selection__merge_same_customer_sale_order_wizard__type__exist
+#: model:ir.model.fields.selection,name:order_merge.selection__merge_same_vendor_purchase_order_wizard__type__exist
+#: model:ir.model.fields.selection,name:order_merge.selection__purchase_order_merge__type__exist
+#: model:ir.model.fields.selection,name:order_merge.selection__sale_order_merge__type__exist
+msgid "New order and Delete all selected order"
+msgstr "أمر جديد وحذف كل الطلبات المختارة"
+
+#. module: order_merge
+#: model_terms:ir.ui.view,arch_db:order_merge.view_purchase_order_line_merge_form
+#: model_terms:ir.ui.view,arch_db:order_merge.view_sale_order_line_merge_form
+msgid "Or"
+msgstr "أو"
+
+#. module: order_merge
+#: model:ir.model.fields,field_description:order_merge.field_merge_same_customer_sale_order_wizard__sale_order_to_merge
+#: model:ir.model.fields,field_description:order_merge.field_merge_same_vendor_purchase_order_wizard__purchase_order_to_merge
+#: model:ir.model.fields,field_description:order_merge.field_purchase_order_merge__purchase_order_to_merge
+#: model:ir.model.fields,field_description:order_merge.field_sale_order_merge__sale_order_to_merge
+msgid "Orders to merge"
+msgstr "أوامر الدمج"
+
+#. module: order_merge
+#: model:ir.model,name:order_merge.model_purchase_order
+msgid "Purchase Order Inherit"
+msgstr "وراثة أمر الشراء"
+
+#. module: order_merge
+#: model:ir.model,name:order_merge.model_purchase_orderline_merge_wizard
+msgid "Purchase Orderline Merge"
+msgstr "دمج سطر أوامر الشراء"
+
+#. module: order_merge
+#: model:ir.model,name:order_merge.model_sale_order
+msgid "Sale Order Inherit"
+msgstr "يرث أمر البيع"
+
+#. module: order_merge
+#: model:ir.model,name:order_merge.model_sale_orderline_merge_wizard
+msgid "Sale Orderline Merge"
+msgstr "دمج سطر أوامر البيع"
+
+#. module: order_merge
+#: code:addons/order_merge/wizard/merge_same_vendor_purchase_orders_wizard.py:0
+#: code:addons/order_merge/wizard/merge_same_vendor_purchase_orders_wizard.py:0
+#: code:addons/order_merge/wizard/merge_same_vendor_purchase_orders_wizard.py:0
+#: code:addons/order_merge/wizard/merge_same_vendor_purchase_orders_wizard.py:0
+#: code:addons/order_merge/wizard/order_merge_wiz.py:0
+#: code:addons/order_merge/wizard/order_merge_wiz.py:0
+#: code:addons/order_merge/wizard/order_merge_wiz.py:0
+#: code:addons/order_merge/wizard/order_merge_wiz.py:0
+#: code:addons/order_merge/wizard/order_merge_wiz.py:0
+#, python-format
+msgid "This purchases order has been created from: <b>%s</b>"
+msgstr "تم إنشاء أمر الشراء هذا من: <b>٪s</ b>"
+
+#. module: order_merge
+#: code:addons/order_merge/wizard/merge_same_customer_sale_orders_wizard.py:0
+#: code:addons/order_merge/wizard/merge_same_customer_sale_orders_wizard.py:0
+#: code:addons/order_merge/wizard/merge_same_customer_sale_orders_wizard.py:0
+#: code:addons/order_merge/wizard/merge_same_customer_sale_orders_wizard.py:0
+#: code:addons/order_merge/wizard/order_merge_wiz.py:0
+#: code:addons/order_merge/wizard/order_merge_wiz.py:0
+#: code:addons/order_merge/wizard/order_merge_wiz.py:0
+#: code:addons/order_merge/wizard/order_merge_wiz.py:0
+#: code:addons/order_merge/wizard/order_merge_wiz.py:0
+#, python-format
+msgid "This sale order has been created from: <b>%s</b>"
+msgstr "تم إنشاء أمر البيع هذا من: <b>٪s </b>"
+
+#. module: order_merge
+#: model:ir.model.fields,field_description:order_merge.field_merge_same_vendor_purchase_order_wizard__partner_id
+#: model:ir.model.fields,field_description:order_merge.field_purchase_order_merge__partner_id
+msgid "Vendor"
+msgstr "بائع"
+
+#. module: order_merge
+#: model_terms:ir.ui.view,arch_db:order_merge.view_order_merge_form_new_1
+msgid ""
+"When you merge orders for different customers new sale order will be "
+"generated for selected Customer and other sales will be cancel. Do you want "
+"to continue ?"
+msgstr ""
+
+#. module: order_merge
+#: model_terms:ir.ui.view,arch_db:order_merge.view_purchase_order_merge_form_new_1
+msgid ""
+"When you merge orders for different vendor new purchase order will be "
+"generated for selected vendor and other purchase will be cancel. Do you want"
+" to continue ?"
+msgstr ""
+
+#. module: order_merge
+#: model_terms:ir.ui.view,arch_db:order_merge.view_purchase_orderline_merge_settings
+msgid ""
+"Will Automatically merge purchase orderlines while creating or editing "
+"order."
+msgstr ""
+
+#. module: order_merge
+#: model_terms:ir.ui.view,arch_db:order_merge.view_sale_orderline_merge_settings
+msgid ""
+"Will Automatically merge sale orderlines while creating or editing order."
+msgstr ""
+
+#. module: order_merge
+#: model_terms:ir.ui.view,arch_db:order_merge.view_order_merge_form_new_1
+#: model_terms:ir.ui.view,arch_db:order_merge.view_purchase_order_merge_form_new_1
+msgid "You can only merge draft orders."
+msgstr "يمكنك فقط دمج أوامر المسودة."
+
+#. module: order_merge
+#: model_terms:ir.ui.view,arch_db:order_merge.view_order_merge_form_new_1
+#: model_terms:ir.ui.view,arch_db:order_merge.view_purchase_order_merge_form_new_1
+#: model_terms:ir.ui.view,arch_db:order_merge.view_same_customer_sale_order_merge_form_new_1
+#: model_terms:ir.ui.view,arch_db:order_merge.view_same_vendor_purchase_order_merge_form_new_1
+msgid "or"
+msgstr "أو"

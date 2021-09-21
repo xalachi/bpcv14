@@ -1,0 +1,15 @@
+
+Version 14.0.0.1 : (05-02-2021)	
+		- Solve invoice create issue of partially paid order.
+
+Version 14.0.0.2 : (10-03-2021)	
+		-  allow to enter amount 0.00 and pay whole order later on.
+
+=> 14.0.0.3 : Improved an index as per latest changes.
+
+Version 14.0.0.4 : (08/06/21)
+		- Update _accumulate_amounts() method as per base.
+
+Version 14.0.0.5 : (16/06/21)
+		- Solved issue of session close with draft order . overrride action_pos_session_closing_control() method also.
+		- Solved multiple picking issue.

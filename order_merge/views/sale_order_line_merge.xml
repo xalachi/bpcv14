@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!--Wizard For Sale Order Line Merge-->
+        <record id="view_sale_order_line_merge_form" model="ir.ui.view">
+            <field name="model">sale.orderline.merge.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Merge orders">
+                    <sheet>
+                        <group>
+                            <p>Are you sure to merge Sale order lines ?</p>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button string='Merge' name="merge_orderlines" type="object" class="btn-primary"/>Or
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
