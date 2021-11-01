@@ -177,8 +177,15 @@
                 <br/>
 
                 <p t-attf-style="font-size:#{font.size};" t-if="o.move_type in ('out_invoice', 'in_refund') and o.payment_reference" name="payment_communication">
-                    Please use the following communication for your payment : <b><span t-field="o.payment_reference"/></b>
-                </p>
+                    Favor utilizar los siguientes datos para sus pagos : <b>BNCR ¢ IBAN CR77015102110010028707</b><br/>
+									 <b>BNCR $ IBAN CR26015102120020035029</b><br/>
+									 <b>DAVIVIENDA ¢ IBAN CR43010409142213606212</b><br/>	
+                							 <b>DAVIVIENDA $ IBAN CR46010409142213607128</b><br/>
+		
+		EMITIDA CONFORME A RESOLUCION N°DGT-R-033-2019 del 20/06/2019
+
+
+		</p>
                 
                 <div t-attf-style="font-size:#{font.size};text-align: left; white-space: pre-line;" t-if="o.narration">
                     <span t-esc="o.narration"/>
