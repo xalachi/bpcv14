@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="res_config_settings_view_form_inherited" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.report.template.invoice</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <div id="invoicing_settings" position="inside">
+                <div class="col-12 col-lg-6 o_setting_box" groups="base.group_no_one">
+                    <div class="o_setting_right_pane">
+                        <b>Invoice Print Template</b><br/>
+                        <button context="{'report_name':'report_customer_invoice'}" name="open_custom_template_report_utils" string="Configure Custom Template" icon="fa-arrow-right" type="object" class="btn-link"/>
+                    </div>
+                </div>
+            </div>
+        </field>
+    </record>
+
+
+
+</odoo>

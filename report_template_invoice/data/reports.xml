@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data noupdate="1">
+
+        <!--Paperformat-->
+        <record id="paperformat_invoice_euro_fit" model="report.paperformat">
+            <field name="name">Invoice Paperformat A4 (Fit)</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">35</field>
+            <field name="margin_bottom">28</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">35</field>
+            <field name="dpi">90</field>
+        </record>
+
+
+        <!--Designs-->
+        <record id="data_reporting_custom_template_invoice_default" model="reporting.custom.template.template">
+            <field name="name">Default</field>
+            <field name="name_technical">default</field>
+            <field name="report_name">report_customer_invoice</field>
+        </record>
+
+        <!-- White -->
+        <record id="data_reporting_custom_template_invoice_white" model="reporting.custom.template.template">
+            <field name="name">White</field>
+            <field name="name_technical">white</field>
+            <field name="report_name">report_customer_invoice</field>
+<!--            <field name="color1">#000000</field>-->
+<!--            <field name="color2">#000000</field>-->
+<!--            <field name="image" type="base64" file="report_template_invoice/static/src/img/template-preview/preview-pink.png"/>-->
+        </record>
+
+        <!--Pink-->
+        <record id="data_reporting_custom_template_invoice_pink" model="reporting.custom.template.template">
+            <field name="name">Pink</field>
+            <field name="name_technical">pink</field>
+            <field name="report_name">report_customer_invoice</field>
+            <field name="color1">#F28081</field>
+            <field name="color2">#FEF5F5</field>
+            <field name="image" type="base64" file="report_template_invoice/static/src/img/template-preview/preview-pink.png"/>
+        </record>
+
+        <!--Golden-->
+        <record id="data_reporting_custom_template_invoice_golden" model="reporting.custom.template.template">
+            <field name="name">Golden</field>
+            <field name="name_technical">golden</field>
+            <field name="report_name">report_customer_invoice</field>
+            <field name="color1">#d0a853</field>
+            <field name="color2">#e6e6e6</field>
+            <field name="image" type="base64" file="report_template_invoice/static/src/img/template-preview/preview-golden.png"/>
+        </record>
+
+        <!--Silver-->
+        <record id="data_reporting_custom_template_invoice_silver" model="reporting.custom.template.template">
+            <field name="name">Silver</field>
+            <field name="name_technical">silver</field>
+            <field name="report_name">report_customer_invoice</field>
+            <field name="color1">#989898</field>
+            <field name="color2">#D3D3D3</field>
+            <field name="image" type="base64" file="report_template_invoice/static/src/img/template-preview/preview-silver.png"/>
+        </record>
+
+        <!--Coral & Teal-->
+        <record id="data_reporting_custom_template_invoice_teal" model="reporting.custom.template.template">
+            <field name="name">Teal</field>
+            <field name="name_technical">teal</field>
+            <field name="report_name">report_customer_invoice</field>
+            <field name="color1">#4cc0c0</field>
+            <field name="color2">#d9f2f2</field>
+            <field name="image" type="base64" file="report_template_invoice/static/src/img/template-preview/preview-teal.png"/>
+        </record>
+
+        <!--Blue-->
+        <record id="data_reporting_custom_template_invoice_blue" model="reporting.custom.template.template">
+            <field name="name">Blue</field>
+            <field name="name_technical">blue</field>
+            <field name="report_name">report_customer_invoice</field>
+            <field name="color1">#008bde</field>
+            <field name="color2">#b3e3ff</field>
+            <field name="image" type="base64" file="report_template_invoice/static/src/img/template-preview/preview-blue.png"/>
+        </record>
+
+        <!--Dark Blue-->
+        <record id="data_reporting_custom_template_invoice_blue_dark" model="reporting.custom.template.template">
+            <field name="name">Dark Blue</field>
+            <field name="name_technical">blue_dark</field>
+            <field name="report_name">report_customer_invoice</field>
+            <field name="color1">#344c67</field>
+            <field name="color2">#aabed4</field>
+            <field name="image" type="base64" file="report_template_invoice/static/src/img/template-preview/preview-dark-blue.png"/>
+        </record>
+
+        <!--Green-->
+        <record id="data_reporting_custom_template_invoice_green" model="reporting.custom.template.template">
+            <field name="name">Green</field>
+            <field name="name_technical">green</field>
+            <field name="report_name">report_customer_invoice</field>
+            <field name="color1">#194742</field>
+            <field name="color2">#a1ded7</field>
+            <field name="image" type="base64" file="report_template_invoice/static/src/img/template-preview/preview-green.png"/>
+        </record>
+
+        <!--Dark-->
+        <record id="data_reporting_custom_template_invoice_dark" model="reporting.custom.template.template">
+            <field name="name">Dark</field>
+            <field name="name_technical">dark</field>
+            <field name="report_name">report_customer_invoice</field>
+            <field name="color1">#5a5250</field>
+            <field name="color2">#c3bdbb</field>
+            <field name="image" type="base64" file="report_template_invoice/static/src/img/template-preview/preview-dark.png"/>
+        </record>
+
+        <!--Jacaranda-->
+        <record id="data_reporting_custom_template_invoice_jacaranda6" model="reporting.custom.template.template">
+            <field name="name">Jacaranda</field>
+            <field name="name_technical">jacaranda</field>
+            <field name="report_name">report_customer_invoice</field>
+            <field name="color1">#69488c</field>
+            <field name="color2">#a187bd</field>
+            <field name="image" type="base64" file="report_template_invoice/static/src/img/template-preview/preview-jacaranda.png"/>
+        </record>
+
+        <!--Red Dark-->
+        <record id="data_reporting_custom_template_invoice_dark_red" model="reporting.custom.template.template">
+            <field name="name">Dark Red</field>
+            <field name="name_technical">dark_red</field>
+            <field name="report_name">report_customer_invoice</field>
+            <field name="color1">#e94a53</field>
+            <field name="color2">#f4a4a8</field>
+            <field name="image" type="base64" file="report_template_invoice/static/src/img/template-preview/preview-dark-red.png"/>
+        </record>
+
+        <!--Chocolate-->
+        <record id="data_reporting_custom_template_invoice_chocolate" model="reporting.custom.template.template">
+            <field name="name">Chocolate</field>
+            <field name="name_technical">chocolate</field>
+            <field name="report_name">report_customer_invoice</field>
+            <field name="color1">#62310e</field>
+            <field name="color2">#eca979</field>
+            <field name="image" type="base64" file="report_template_invoice/static/src/img/template-preview/preview-chocolate.png"/>
+        </record>
+
+        <!--Violet-->
+        <record id="data_reporting_custom_template_invoice_violet" model="reporting.custom.template.template">
+            <field name="name">Violet</field>
+            <field name="name_technical">violet</field>
+            <field name="report_name">report_customer_invoice</field>
+            <field name="color1">#ff00ff</field>
+            <field name="color2">#ffb3ff</field>
+            <field name="image" type="base64" file="report_template_invoice/static/src/img/template-preview/preview-violet.png"/>
+        </record>
+
+        <!--Template-->
+        <record id="data_reporting_custom_template_invoice" model="reporting.custom.template">
+            <field name="name">report_customer_invoice</field>
+            <field name="name_display">Customer Invoice Template</field>
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="line_model_id" ref="account.model_account_move_line"/>
+            <field name="paperformat_id" ref="report_template_invoice.paperformat_invoice_euro_fit"/>
+            <field name="template_id" ref="report_template_invoice.data_reporting_custom_template_invoice_pink"/>
+            <field name="visible_watermark" eval="True"/>
+            <field name="header_company_field_ids" eval="[(5, 0, 0),
+                (0,0, {'prefix': False,'sequence': 10,'field_id': ref('base.field_res_company__street'),}),
+                (0,0, {'prefix': 'next_line','sequence': 20,'field_id': ref('base.field_res_company__street2'),}),
+                (0,0, {'prefix': 'next_line','sequence': 30,'field_id': ref('base.field_res_company__city'),}),
+                (0,0, {'prefix': 'comma','sequence': 40,'field_id': ref('base.field_res_company__state_id'), 'field_display_field_id': ref('base.field_res_country_state__name'),}),
+                (0,0, {'prefix': 'comma','sequence': 50,'field_id': ref('base.field_res_company__zip'),}),
+                (0,0, {'prefix': 'next_line','sequence': 60,'field_id': ref('base.field_res_company__country_id'),'field_display_field_id': ref('base.field_res_country__name'),}),
+            ]"/>
+            <field name="visible_partner_section" eval="True"/>
+            <field name="partner_field_ids" eval="[(5, 0, 0),
+                (0,0, {'prefix': False,'sequence': 10,'field_id': ref('base.field_res_partner__street'),}),
+                (0,0, {'prefix': 'next_line','sequence': 20,'field_id': ref('base.field_res_partner__street2'),}),
+                (0,0, {'prefix': 'next_line','sequence': 30,'field_id': ref('base.field_res_partner__city'),}),
+                (0,0, {'prefix': 'comma','sequence': 40,'field_id': ref('base.field_res_partner__state_id'),'field_display_field_id': ref('base.field_res_country_state__name')}),
+                (0,0, {'prefix': 'comma','sequence': 50,'field_id': ref('base.field_res_partner__zip'),}),
+                (0,0, {'prefix': 'next_line','sequence': 60,'field_id': ref('base.field_res_partner__country_id'),'field_display_field_id': ref('base.field_res_country__name')}),
+            ]"/>
+            <field name="visible_section_2" eval="True"/>
+            <field name="section_2_field_ids" eval="[(5, 0, 0),
+                (0,0, {'sequence': 10,'field_id': ref('account.field_account_move__invoice_date'),'label': 'Invoice Date'}),
+                (0,0, {'sequence': 20,'field_id': ref('account.field_account_move__invoice_date_due'),'label': 'Due Date'}),
+                (0,0, {'sequence': 30,'field_id': ref('account.field_account_move__invoice_origin'),'label': 'Source'}),
+                (0,0, {'sequence': 40,'field_id': ref('account.field_account_move__partner_id'),'label': 'Customer Code', 'field_display_field_id':ref('base.field_res_partner__ref')}),
+                (0,0, {'sequence': 50,'field_id': ref('account.field_account_move__ref'),'label': 'Ref'}),
+            ]"/>
+            <field name="visible_section_lines" eval="True"/>
+            <field name="section_lines_field_ids" eval="[(5, 0, 0),
+                (0,0, {'sequence': 10, 'alignment': 'left','field_id': ref('account.field_account_move_line__name'),'label': 'Description'}),
+                (0,0, {'sequence': 20, 'alignment': 'center','field_id': ref('account.field_account_move_line__quantity'),'label': 'Quantity'}),
+                (0,0, {'sequence': 30, 'alignment': 'right','field_id': ref('account.field_account_move_line__price_unit'),'label': 'Unit Price'}),
+                (0,0, {'sequence': 40, 'alignment': 'center','field_id': ref('account.field_account_move_line__product_uom_id'),'label': 'UOM'}),
+                (0,0, {'sequence': 50, 'alignment': 'right','field_id': ref('account.field_account_move_line__discount'),'label': 'Disc.%', 'null_hide_column': True}),
+                (0,0, {'sequence': 60, 'alignment': 'center','field_id': ref('account.field_account_move_line__tax_ids'),'label': 'Taxes'}),
+                (0,0, {'sequence': 70, 'alignment': 'right','field_id': ref('account.field_account_move_line__price_subtotal'),'label': 'Amount', 'currency_field_name': 'move_id.currency_id', 'thousands_separator': 'applicable'}),
+            ]"/>
+            <field name="visible_section_footer" eval="True"/>
+            <field name="section_footer_field_ids" eval="[(5, 0, 0),
+                (0,0, {'sequence': 10, 'thousands_separator': 'applicable','field_id': ref('account.field_account_move__amount_untaxed'),'label': 'Untaxed Amount'}),
+                (0,0, {'sequence': 20, 'thousands_separator': 'applicable','field_id': ref('account.field_account_move__amount_tax'),'label': 'Tax'}),
+                (0,0, {'sequence': 30, 'thousands_separator': 'applicable','field_id': ref('account.field_account_move__amount_total'),'label': 'Amount With Tax'}),
+            ]"/>
+            <field name="footer_company_field_ids" eval="[(5, 0, 0),
+                (0,0, {'label': 'Phone','sequence': 10,'field_id': ref('base.field_res_company__phone'),}),
+                (0,0, {'label': 'Email','sequence': 20,'field_id': ref('base.field_res_company__email'),}),
+                (0,0, {'label': 'Web','sequence': 30,'field_id': ref('base.field_res_company__website'),}),
+                (0,0, {'label': 'Tax ID','sequence': 40,'field_id': ref('base.field_res_company__vat'),}),
+            ]"/>
+            <field name="amount_in_text_visible" eval="True"/>
+            <field name="amount_in_text_label">Amount in Text</field>
+            <field name="section_other_option_ids" eval="[(5, 0, 0),
+                (0,0, {'field_type': 'char', 'name_technical':'state_posted', 'name':'HEADING:IF STATE IS POSTED','value_char':'SALES&lt;br/&gt;INVOICE'}),
+                (0,0, {'field_type': 'char', 'name_technical':'state_draft', 'name':'HEADING:IF STATE IS DRAFT','value_char':'DRAFT&lt;br/&gt;INVOICE'}),
+                (0,0, {'field_type': 'char', 'name_technical':'state_cancel', 'name':'HEADING:IF STATE IS CANCELLED','value_char':'CANCELLED&lt;br/&gt;INVOICE'}),
+
+                (0,0, {'field_type': 'char', 'name_technical':'label_customer', 'name':'LABEL: Customer','value_char':'CUSTOMER'}),
+
+                (0,0, {'field_type': 'boolean', 'name_technical':'show_serial_number', 'name':'Show serial number ?','value_boolean':True}),
+                (0,0, {'field_type': 'char', 'name_technical':'serial_number_heading', 'name':'Serial number heading','value_char':'Sl.'}),
+
+                (0,0, {'field_type': 'boolean', 'name_technical':'show_product_image', 'name':'Show product image ?','value_boolean':False}),
+                (0,0, {'field_type': 'integer', 'name_technical':'product_image_position', 'name':'Product image position (Column)','value_integer':2}),
+                (0,0, {'field_type': 'char', 'name_technical':'product_image_column_heading', 'name':'Product image heading','value_char':'Product Image'}),
+                (0,0, {'field_type': 'char', 'name_technical':'product_image_width', 'name':'Product image width','value_char':'75px'}),
+                (0,0, {'field_type': 'boolean', 'name_technical':'show_shipping_address', 'name':'Show shipping address','value_boolean':False}),
+            ]"/>
+        </record>
+    </data>
+</odoo>

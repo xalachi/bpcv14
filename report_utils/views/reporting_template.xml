@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template id="font_assets">
+        <t t-raw="request.env['res.company'].get_template_report_font_assets_report_utils()"/>
+    </template>
+
+    <!--Search-->
+    <record id="view_search_reporting_template" model="ir.ui.view">
+        <field name="name">reporting.custom.template.search</field>
+        <field name="model">reporting.custom.template</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Name" filter_domain="[('name', 'ilike', self)]"/>
+            </search>
+        </field>
+    </record>
+
+    <!--Tree-->
+    <record id="view_tree_reporting_template" model="ir.ui.view">
+        <field name="name">reporting.custom.template.view.tree</field>
+        <field name="model">reporting.custom.template</field>
+        <field name="arch" type="xml">
+            <tree create="0" delete="0">
+                <field name="name_display"/>
+                <field name="name" invisible="1"/>
+                <field name="model_id" invisible="1"/>
+                <field name="template_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--Form-->
+    <record id="view_form_reporting_template" model="ir.ui.view">
+        <field name="name">reporting.custom.template.view.form</field>
+        <field name="model">reporting.custom.template</field>
+        <field name="arch" type="xml">
+            <form create="0" delete="1">
+                <sheet>
+                    <div class="oe_button_box">
+                            <button name="reset_template"
+                                    type="object"
+                                    confirm="Reset will discard your changes. Do you want to proceed?"
+                                    class="oe_stat_button"
+                                    string="Reset"
+                                    context="{'report_name':name}"
+                                    icon="fa-refresh">
+                            </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name" invisible="1"/>
+                            <field name="name_display" readonly="1"/>
+                            <field name="model_id" readonly="1" options="{'no_open': True}" invisible="1"/>
+                            <field name="section_2_model_id" readonly="1" options="{'no_open': True}" invisible="1"/>
+                            <field name="visible_reset" invisible="1"/>
+                            <field name="date_format" required="1"/>
+                            <field name="show_header"/>
+                            <field name="show_footer"/>
+                            <field name="page_number_type"/>
+                        </group>
+                        <group>
+                            <field name="template_id" required="1" domain="[('report_name','=',name)]" widget="selection"/>
+                            <field name="template_preview" string="Preview" widget="image" attrs="{'invisible':[('template_preview','=',False)]}"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Header &amp; Footer">
+                            <separator string="Page Header Section"/>
+                            <field name="header_company_field_ids">
+                                <tree  editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="field_id" options="{'no_create':True,'no_open':True}"/>
+                                    <field name="field_type"/>
+                                    <field name="field_relation" invisible="1"/>
+                                    <field name="field_display_field_id" attrs="{'readonly':[('field_type','not in', ['many2one'])]}" options="{'no_create':True,'no_open':True}"/>
+                                    <field name="prefix"/>
+                                    <field name="label"/>
+                                </tree>
+                            </field>
+                            <separator string="Page Footer Section"/>
+                            <field name="footer_company_field_ids">
+                                <tree  editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="field_id" options="{'no_create':True,'no_open':True}"/>
+                                    <field name="field_type"/>
+                                    <field name="field_relation" invisible="1"/>
+                                    <field name="field_display_field_id" attrs="{'readonly':[('field_type','not in', ['many2one'])]}" options="{'no_create':True,'no_open':True}"/>
+                                    <field name="label"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Partner Section" attrs="{'invisible':[('visible_partner_section','!=',True)]}">
+                            <field name="visible_partner_section" invisible="1"/>
+                            <separator string="Partner Section"/>
+                            <field name="partner_field_ids" attrs="{'invisible':[('visible_partner_section','!=',True)]}">
+                                <tree  editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="field_id" options="{'no_create':True,'no_open':True}"/>
+                                    <field name="field_type"/>
+                                    <field name="field_relation" invisible="1"/>
+                                    <field name="field_display_field_id" attrs="{'readonly':[('field_type','not in', ['many2one'])]}" options="{'no_create':True,'no_open':True}"/>
+                                    <field name="prefix"/>
+                                    <field name="label"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Details Section">
+                            <field name="visible_section_2" invisible="1"/>
+                            <separator string="Details Section"/>
+                            <field name="section_2_field_ids" attrs="{'invisible':[('visible_section_2','!=',True)]}">
+                                <tree  editable="bottom">
+                                    <field name="report_id" invisible="1"/>
+                                    <field name="model_id" invisible="1"/>
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="field_id" options="{'no_create':True,'no_open':True}" required="1"/>
+                                    <field name="field_type"/>
+                                    <field name="field_relation" invisible="1"/>
+                                    <field name="field_display_field_id" attrs="{'readonly':[('field_type','not in', ['many2one'])]}" options="{'no_create':True,'no_open':True}"/>
+                                    <field name="label"/>
+                                    <field name="null_value_display"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Lines Section" attrs="{'invisible':[('visible_section_lines','!=',True)]}">
+                            <field name="visible_section_lines" invisible="1"/>
+                            <separator string="Lines Section"/>
+                            <group attrs="{'invisible':[('visible_section_lines','!=',True)]}">
+                                <field name="line_model_id" readonly="1"/>
+                            </group>
+                            <field name="section_lines_field_ids" attrs="{'invisible':[('visible_section_lines','!=',True)]}">
+                                <tree  editable="bottom">
+                                    <field name="report_id" invisible="1"/>
+                                    <field name="model_id" invisible="1"/>
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="field_id" options="{'no_create':True,'no_open':True}"/>
+                                    <field name="field_type"/>
+                                    <field name="field_relation" invisible="1"/>
+                                    <field name="field_display_field_id" attrs="{'invisible':[('field_type','not in', ['many2one'])]}" options="{'no_create':True,'no_open':True}"/>
+                                    <field name="label"/>
+                                    <field name="currency_field_name"/>
+                                    <field name="width" placeholder="30%"/>
+                                    <field name="alignment"/>
+                                    <field name="null_hide_column"/>
+                                    <field name="thousands_separator" attrs="{'invisible':[('field_type','not in', ['integer','float','monetary'])]}"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Body Footer" attrs="{'invisible':[('visible_section_footer','!=',True)]}">
+                            <field name="visible_section_footer" invisible="1"/>
+                            <separator string="Body Footer Section"/>
+                            <field name="section_footer_field_ids" attrs="{'invisible':[('visible_section_footer','!=',True)]}">
+                                <tree  editable="bottom">
+                                    <field name="report_id" invisible="1"/>
+                                    <field name="model_id" invisible="1"/>
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="field_id" options="{'no_create':True,'no_open':True}"/>
+                                    <field name="field_type"/>
+                                    <field name="field_relation" invisible="1"/>
+                                    <field name="field_display_field_id" attrs="{'readonly':[('field_type','not in', ['many2one'])]}" options="{'no_create':True,'no_open':True}"/>
+                                    <field name="label"/>
+                                    <field name="currency_field_name"/>
+                                    <field name="thousands_separator" attrs="{'invisible':[('field_type','not in', ['integer','float','monetary'])]}"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Advanced">
+                            <group string="Watermark" attrs="{'invisible':[('visible_watermark','!=',True)]}">
+                                <group>
+                                    <field name="visible_watermark" invisible="1"/>
+                                    <field name="watermark" widget="image"/>
+                                </group>
+                                <group>
+                                    <field name="watermark_opacity"/>
+                                    <field name="watermark_size"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group string="Amount In Text" attrs="{'invisible': [('amount_in_text_visible','!=',True)]}">
+                                    <field name="amount_in_text_visible" invisible="1"/>
+                                    <field name="amount_in_text_applicable"/>
+                                    <field name="amount_in_text_label" attrs="{'invisible': [('amount_in_text_applicable','!=',True)]}"/>
+                                </group>
+                                <group string="Font">
+                                    <field name="font_size"/>
+                                    <field name="font_family"/>
+                                    <field name="font_line_height"/>
+                                </group>
+                                <group string="Paperformat" attrs="{'invisible':[('paperformat_id','=',False)]}">
+                                    <label for="paperformat_id"/>
+                                    <div class="o_row">
+                                        <field name="paperformat_id" readonly="1"/>
+                                        <div class="text-muted">(Click to change)</div>
+                                    </div>
+                                </group>
+                                <group string="Signature Boxes" attrs="{'invisible':[('visible_signature_boxes','!=',True)]}">
+                                    <field name="visible_signature_boxes" invisible="1"/>
+                                    <field name="signature_box_ids" nolabel="1">
+                                        <tree editable="bottom">
+                                            <field name="sequence" widget="handle"/>
+                                            <field name="heading"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group string="Other Options" attrs="{'invisible':[('section_other_option_ids','=',[])]}">
+                                    <field name="section_other_option_ids" nolabel="1" attrs="{'invisible':[('section_other_option_ids','=',[])]}">
+                                        <tree create="0" delete="0">
+                                            <field name="field_type" invisible="1"/>
+                                            <field name="name_technical" invisible="1"/>
+                                            <field name="name" readonly="1"/>
+                                            <field name="value_display" readonly="1"/>
+                                            <field name="value_char" invisible="1"/>
+                                        </tree>
+                                        <form create="0" delete="0">
+                                            <group>
+                                                <field name="field_type" invisible="1"/>
+                                                <field name="name_technical" invisible="1"/>
+                                                <field name="value_display" invisible="1"/>
+                                                <field name="name" readonly="1"/>
+                                                <field name="value_char" string="Value" attrs="{'invisible':[('field_type','!=','char')]}"/>
+                                                <field name="value_boolean" string="Value" attrs="{'invisible':[('field_type','!=','boolean')]}"/>
+                                                <field name="value_integer" string="Value" attrs="{'invisible':[('field_type','!=','integer')]}"/>
+                                                <field name="value_text" string="Value" attrs="{'invisible':[('field_type','!=','text')]}"/>
+                                            </group>
+                                        </form>
+                                    </field>
+                                </group>
+                                <group string="Translations">
+                                    <field name="translate_term_ids" nolabel="1">
+                                        <tree editable="bottom">
+                                            <field name="translate_from" placeholder="Saudi Arabia"/>
+                                            <field name="translate_to" placeholder="المملكة العربية السعودية"/>
+                                        </tree>
+                                        <form>
+                                            <field name="translate_from"/>
+                                            <field name="translate_to"/>
+                                        </form>
+                                    </field>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="FAQ">
+                            <table>
+                                <tr><td style="width:20px; vertical-align:top;">&#10070;</td><td>What is the Display Field ?</td></tr>
+                                <tr><td style="width:20px; vertical-align:top;">A.</td><td>Display Field is the field of Many2one dropdown which is used to display content. For example, the default display of Country field is with country code. If you want to display country name only, you can choose Country Name field as display field</td></tr>
+                            </table>
+
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--Action-->
+    <record id="action_view_reporting_template" model="ir.actions.act_window">
+        <field name="name">Custom Templates</field>
+        <field name="res_model">reporting.custom.template</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+    </record>
+
+    <!--Menu-->
+    <menuitem name="Custom Templates" id="menu_view_reporting_template" parent="base.reporting_menuitem" action="action_view_reporting_template" sequence="10"/>
+
+</odoo>
