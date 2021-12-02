@@ -1,0 +1,7 @@
+<odoo>
+    <template id="assets_invoice_dashboard_extend" name="Invoice Dashboard two" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/base_accounting_kit_extend/static/src/js/payment_render.js"/>
+        </xpath>
+    </template>
+</odoo>
