@@ -12,13 +12,13 @@
     # Check https://github.com/odoo/odoo/blob/14.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '14.0.0.1',
+    'version': '14.0.0.2',
     # any module necessary for this one to work correctly
     'depends': ['base','account','base_accounting_kit','l10n_cr_electronic_invoice'],
 
     # always loaded
     'data': [
-        #'views/assets.xml'
+        'views/account_bank_statement_views.xml'
     ],
 
     # only loaded in demonstration mode
