@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="button_toggle" inherit_id="point_of_sale.assets" name="button add">
+		<xpath expr="." position="inside">
+			<link rel="stylesheet" href="/bi_pos_multi_currency/static/src/css/button.css"/>
+			<script type="text/javascript" src="/bi_pos_multi_currency/static/src/js/pos_data.js"></script>
+			<script type="text/javascript" src="/bi_pos_multi_currency/static/src/js/BiPaymentScreen.js"></script>
+		</xpath>
+	</template>
+</odoo>
