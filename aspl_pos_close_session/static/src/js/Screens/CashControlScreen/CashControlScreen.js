@@ -85,11 +85,18 @@ odoo.define('aspl_pos_close_session.CashControlScreen', function (require) {
         validateOpenBalance(){
             var self = this;
             var total_open_balance = self.state.total;
-            if(!this.env.pos.config.allow_with_zero_amount && total_open_balance <= 0){
-                alert('Opening Amount should be > 0');
+//            if(!this.env.pos.config.allow_with_zero_amount && total_open_balance <= 0){
+//                alert('Opening Amount should be > 0');
+//                return;
+//            }
+//            this.env.pos.bank_statement.balance_start = total_open_balance;
+            if(!this.env.pos.config.allow_with_zero_amount && total_open_balance < 0){
+                alert('El monto de apertura debe ser mayor o igual 0');
                 return;
             }
-            this.env.pos.bank_statement.balance_start = total_open_balance;
+            if (this.env.pos.bank_statement != undefined){
+                this.env.pos.bank_statement.balance_start = total_open_balance;
+            }
             this.env.pos.pos_session.state = 'opened';
             this.rpc({
                 model: 'pos.session',
