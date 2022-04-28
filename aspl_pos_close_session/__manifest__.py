@@ -22,7 +22,7 @@
     'website': 'http://www.acespritech.com',
     'price': 35.00,
     'currency': 'EUR',
-    'version': '2.0.0',
+    'version': '2.0.1',
     'depends': ['base', 'point_of_sale'],
     'images': ['static/description/main_screenshot.png'],
     "data": [
